@@ -14,6 +14,14 @@ const App = () => {
     console.log('< APP : STATE > ', state)
   })
 
+  const resetForm = () => {
+    setState({
+      name: '',
+      type: false,
+      startQuiz: false
+    })
+  }
+
   return (
     <div className="App animated fadeIn">
       <div className="container">
@@ -28,7 +36,7 @@ const App = () => {
         {state.startQuiz && (
           <div className={`row animated ${state.startQuiz ? 'fadeInDown' : 'fadeOutDown'}`}>
             <div className="col-xs-12 ml-auto mr-auto">
-              <QuizForm player={state.name} type={state.type} />
+              <QuizForm player={state.name} type={state.type} reset={ resetForm } />
             </div>
           </div>
         )}

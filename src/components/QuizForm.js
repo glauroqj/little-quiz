@@ -4,7 +4,7 @@ import {
   differenceInMilliseconds
 } from "date-fns"
 
-const QuizForm = ({ player, type }) => {
+const QuizForm = ({ player, type, reset }) => {
 
   const [form, setForm] = useState({
     questions: require(`../questions/${type}`)[type],
@@ -114,6 +114,16 @@ const QuizForm = ({ player, type }) => {
               <span className="badge badge-primary">{ form.finishTimeSeconds }</span>
             </li>
           </ul>
+          
+          <div className="mt-3">
+            <button
+              className="btn btn-block btn-success btn-lg"
+              onClick={ () => { reset() } }
+              type="button"
+            >
+              Novo Jogo
+            </button>
+          </div>
         </div>
       )}
     </div>
