@@ -13,10 +13,10 @@ html, body {
 
     h1 {
       font-size: 4.5rem;
+      margin-bottom: 40px;
     }
 
     form {
-      margin-top: 30px;
 
       input {
         line-height: 2.5;
@@ -34,6 +34,32 @@ html, body {
 
       small {
         color: #fff;
+      }
+    }
+  }
+
+  .quiz-form {
+    letter-spacing: 1.5px;
+
+    .box {
+      min-width: 400px;
+      background-color: transparent;
+
+      .header {
+        font-size: 1.5em;
+      }
+
+      .list-group {
+
+        .list-group-item {
+          font-size: 1.5em;
+
+          &:hover {
+            cursor: pointer;
+            letter-spacing: 1.8px;
+            transition: letter-spacing 0.3s ease-out;
+          }
+        }
       }
     }
   }

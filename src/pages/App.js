@@ -12,7 +12,7 @@ const App = () => {
 
   useEffect(() => {
     console.log('< APP : STATE > ', state)
-  }, [state])
+  })
 
   return (
     <div className="App animated fadeIn">
