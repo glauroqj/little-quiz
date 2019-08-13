@@ -28,12 +28,12 @@ const App = () => {
         {state.startQuiz && (
           <div className={`row animated ${state.startQuiz ? 'fadeInDown' : 'fadeOutDown'}`}>
             <div className="col-xs-12 ml-auto mr-auto">
-              <QuizForm type={state.type} />
+              <QuizForm player={state.name} type={state.type} />
             </div>
           </div>
         )}
 
-        <div className={`row animated ${state.startQuiz ? 'fadeOutDown' : 'fadeIn'}`}>
+        <div className={`row animated ${state.startQuiz ? 'zoomOutDown' : 'fadeIn'}`}>
           <div className="col-xs-12 ml-auto mr-auto">
             <form>
 

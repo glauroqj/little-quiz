@@ -49,6 +49,34 @@ html, body {
         font-size: 1.5em;
       }
 
+      .author {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: baseline;
+        width: auto;
+        max-width: 400px;
+
+        p {
+          width: 50%;
+        }
+
+        .box-info {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          width: 50%;
+
+          img {
+            max-width: 30%;
+            border-radius: 50%;
+          }
+          p {
+          }
+        }
+      }
+
       .list-group {
 
         .list-group-item {
@@ -59,6 +87,21 @@ html, body {
             letter-spacing: 1.8px;
             transition: letter-spacing 0.3s ease-out;
           }
+        }
+      }
+    }
+
+    .last-step {
+      display: flex;
+      flex-direction: column;
+      width: auto;
+      min-width: 400px;
+
+      ul {
+
+        .list-group-item {
+          color: var(--gray-dark);
+          font-size: 1.8em;
         }
       }
     }
