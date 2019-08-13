@@ -1,0 +1,26 @@
+{
+  "hosting": {
+    "public": "build",
+    "ignore": [
+      "**/.*",
+      "firebase.json",
+      "**/node_modules/**",
+      "/build/asset-manifest.json",
+      "/build/static/js/*.js.map"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "headers": [{
+        "source": "index.html",
+        "headers" : [{
+          "key" : "Access-Control-Allow-Origin",
+          "value" : "*"
+        }]
+      }
+    ]
+  }
+}

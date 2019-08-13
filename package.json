@@ -1,0 +1,35 @@
+{
+  "name": "little-quiz",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "firebase": "^6.3.5",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.1.0"
+  },
+  "scripts": {
+    "dev": "react-scripts start src",
+    "build": "react-scripts build src",
+    "deploy": "yarn build && firebase deploy"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "node-sass": "^4.12.0"
+  }
+}
