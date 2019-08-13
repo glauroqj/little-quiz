@@ -1,4 +1,41 @@
+@import 'normalize.scss';
+@import 'theme.scss';
+@import 'animate.scss';
+
 html, body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #323232;
+  font-family: "Neucha", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--primary);
+  letter-spacing: 1px;
+
+  .App {
+    color: #fff;
+    margin-top: 10%;
+
+    h1 {
+      font-size: 4.5rem;
+    }
+
+    form {
+      margin-top: 30px;
+
+      input {
+        line-height: 2.5;
+        letter-spacing: 1.5px;
+      }
+
+      .form-check-label {
+
+        &:hover {
+          cursor: pointer;
+          letter-spacing: 1.7px;
+          transition: letter-spacing 0.3s ease-out;
+        }
+      }
+
+      small {
+        color: #fff;
+      }
+    }
+  }
 }
+
