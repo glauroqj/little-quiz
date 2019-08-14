@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react'
+
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+
 import {
   format,
   differenceInMilliseconds
-} from "date-fns"
+} from 'date-fns'
+
+import Loading from '../components/Loading'
 
 const QuizForm = ({ player, type, reset }) => {
 
@@ -13,7 +19,8 @@ const QuizForm = ({ player, type, reset }) => {
     score: 0,
     startTime: new Date(),
     finishTime: '',
-    finishTimeSeconds: ''
+    finishTimeSeconds: '',
+    loading: false
   })
 
   useEffect(() => {
@@ -28,7 +35,7 @@ const QuizForm = ({ player, type, reset }) => {
 
   }, [form])
 
-  const setAnswer = (choice, index) => {
+  const setAnswer = async (choice, index) => {
     console.log('< ANSWER > ', choice, index)
     const { questions, steps, score, finishTime, finishTimeSeconds, actualStep, startTime } = form
     const payloadAsk = questions[index]
@@ -41,12 +48,35 @@ const QuizForm = ({ player, type, reset }) => {
       increaseScore += payloadAsk.value
     }
 
+    /** finished quiz */
     if (actualStep === steps) {
+      setForm({
+        ...form,
+        loading: true
+      })
+
+      const db = firebase.firestore()
       setFinishTime = new Date()
 
       const timeSeconds = differenceInMilliseconds(setFinishTime, startTime)
 
       setFinishTimeSeconds = format(timeSeconds, 'mm:ss')
+
+      /** send to firestore */
+      const payload = {
+        player,
+        time: setFinishTimeSeconds,
+        score: increaseScore,
+        start: form.startTime,
+        finish: setFinishTime,
+        type
+      }
+
+      await db.collection('users').add(payload)
+      .then(() => {
+        console.log('< SAVED IN FIREBASE >')
+      })
+      .catch(error => console.warn('< PROBLEM TO SAVE IN DB > ', error))
     }
 
     setForm({
@@ -54,7 +84,8 @@ const QuizForm = ({ player, type, reset }) => {
       score: increaseScore,
       actualStep: (actualStep+1),
       finishTime: setFinishTime,
-      finishTimeSeconds: setFinishTimeSeconds
+      finishTimeSeconds: setFinishTimeSeconds,
+      loading: false
     })
 
   }
@@ -67,34 +98,49 @@ const QuizForm = ({ player, type, reset }) => {
         <li className="breadcrumb-item active">STEP: { form.actualStep }</li>
       </ol>
 
-      {form.finishTime === '' && 
-      form.questions.length > 0 && 
+      {form.finishTime === '' &&
+      form.questions.length > 0 &&
       form.questions.map((item, index) => (
         <div className="box mb-5 animated fadeIn" key={index}>
-          <div className="header">{`${index+1}- ${item.ask}`}</div>
 
-          <div className="list-group">
-            {item.options.map((option, i) => (
-              <div
-              key={`${option}-${i}`}
-              className="list-group-item list-group-item-action"
-              onClick={ () => { setAnswer(option, index) } }
-              >
-                {option}
+          {form.loading && (
+            <Loading text='Somando pontuação...' />
+          )}
+          
+          {!form.loading && (
+            <>
+              {item.image && (
+                <img className="img-fluid" src={item.image} alt="" />
+              )}
+
+              <div className="header mt-2">{`${index+1}- ${item.ask}`}</div>
+
+              <div className="list-group mt-2">
+                {item.options.map((option, i) => (
+                  <div
+                  key={`${option}-${i}`}
+                  className="list-group-item list-group-item-action"
+                  onClick={ () => { setAnswer(option, index) } }
+                  >
+                    {option}
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
 
-          <div className="author mt-3">
-            <p>Pergunta criada por:</p>
-            <div className="box-info">
-              <img className="img-fluid" src={item.author.photo} alt="" />
-              <p>{item.author.name}</p>
-            </div>
-          </div>
+              <div className="author mt-3">
+                <p>Pergunta criada por:</p>
+                <div className="box-info">
+                  <img className="img-fluid" src={item.author.photo} alt="" />
+                  <p>{item.author.name}</p>
+                </div>
+              </div>
+            </>
+          )}
+
         </div>
       ))
       .filter((question, i) => (i+1) === form.actualStep)
+      /** show exactly the question in position of array of questions */
       }
 
       {form.finishTime && (

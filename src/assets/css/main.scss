@@ -6,6 +6,7 @@ html, body {
   font-family: "Neucha", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   background-color: var(--primary);
   letter-spacing: 1px;
+  overflow-x: none;
 
   .App {
     color: #fff;
@@ -35,6 +36,16 @@ html, body {
       small {
         color: #fff;
       }
+    }
+  }
+
+  .List {
+    color: #fff;
+    margin-top: 5%;
+
+    h1 {
+      font-size: 4.5rem;
+      margin-bottom: 40px;
     }
   }
 
@@ -108,3 +119,82 @@ html, body {
   }
 }
 
+
+/* loading */
+@keyframes lds-dual-ring {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes lds-dual-ring {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.lds-dual-ring {
+  position: relative;
+  margin: 0 auto;
+}
+.lds-dual-ring div {
+  box-sizing: border-box;
+}
+.lds-dual-ring > div {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  top: 5px;
+  left: 5px;
+  border-radius: 50%;
+  border: 30px solid #000;
+  border-color: #ffffff transparent #ffffff transparent;
+  -webkit-animation: lds-dual-ring 1s linear infinite;
+  animation: lds-dual-ring 1s linear infinite;
+}
+.lds-dual-ring > div:nth-child(2) {
+  border-color: transparent;
+}
+.lds-dual-ring > div:nth-child(2) div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.lds-dual-ring > div:nth-child(2) div:before,
+.lds-dual-ring > div:nth-child(2) div:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: -30px;
+  left: 50px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 160px 0 0 #ffffff;
+}
+.lds-dual-ring > div:nth-child(2) div:after {
+  left: -30px;
+  top: 50px;
+  box-shadow: 160px 0 0 0 #ffffff;
+}
+.lds-dual-ring {
+  width: 49px !important;
+  height: 49px !important;
+  -webkit-transform: translate(-24.5px, -24.5px) scale(0.245) translate(24.5px, 24.5px);
+  transform: translate(-24.5px, -24.5px) scale(0.245) translate(24.5px, 24.5px);
+}
+.lds-css ~ p {
+  text-align: center;
+  font-size: 1.2em;
+}
