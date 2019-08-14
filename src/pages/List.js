@@ -18,16 +18,19 @@ const List = () => {
     const db = firebase.firestore()
     
     db.collection('users')
+    .where('score', '<', 20)
+    .orderBy('score', 'desc')
     .onSnapshot(querySnapshot => {
       let list = []
-      querySnapshot.forEach(doc => list.push(doc.data()))
 
+      querySnapshot.forEach(doc => list.push(doc.data()))
+      
       if (state.list.length < list.length) {
         console.log('< REAL TIME DATA : OK > ')
         setState({
           ...state,
           list,
-          front: list.filter(item => item.type === 'front').sort((item1, item2) => (item1.score < item2.score) ? 1 : -1),
+          front: list /*list.filter(item => item.type === 'front').sort((item1, item2) => (item1.score < item2.score) ? 1 : -1)*/,
           back: [],
           loading: false
         })
