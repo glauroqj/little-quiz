@@ -12,7 +12,7 @@ import Loading from '../components/Loading'
 import { fetchListService } from '../store/actions/ranking/rankingActions'
 
 const List = (props) => {
-  const { list, front, back, loading } = props.state.ranking
+  const { front, back, loading } = props.state.ranking
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const List = (props) => {
       fetchListService(false)
     })
 
-  }, [])
+  }, [dispatch])
 
   return (
     <div className="List animated fadeIn">
