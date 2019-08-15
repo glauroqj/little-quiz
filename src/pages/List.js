@@ -24,14 +24,14 @@ const List = () => {
       let list = []
 
       querySnapshot.forEach(doc => list.push(doc.data()))
-      
+
       if (state.list.length < list.length) {
         console.log('< REAL TIME DATA : OK > ')
         setState({
           ...state,
           list,
-          front: list /*list.filter(item => item.type === 'front').sort((item1, item2) => (item1.score < item2.score) ? 1 : -1)*/,
-          back: [],
+          front: list.filter(item => item.type === 'front'), /*list.filter(item => item.type === 'front').sort((item1, item2) => (item1.score < item2.score) ? 1 : -1)*/
+          back: list.filter(item => item.type === 'back'),
           loading: false
         })
       }
@@ -65,6 +65,18 @@ const List = () => {
 
               {state.front.map((item, index) => (
                 <ol key={`${item.player}${item.score}`} className="breadcrumb animated fadeInLeft">
+                  <li className="breadcrumb-item active">{index+1} - {item.player} - {item.score} - {item.time}</li>
+                </ol>
+              ))
+              .filter((item, index) => index < 10)
+              }
+            </div>
+
+            <div className="col-sm-6">
+              <h4 className="display-5 text-center">Ranking Back-End</h4>
+
+              {state.back.map((item, index) => (
+                <ol key={`${item.player}${item.score}`} className="breadcrumb animated fadeInRight">
                   <li className="breadcrumb-item active">{index+1} - {item.player} - {item.score} - {item.time}</li>
                 </ol>
               ))
