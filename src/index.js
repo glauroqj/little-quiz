@@ -15,6 +15,9 @@ import { store } from './store/store'
 import App from './pages/App'
 import List from './pages/List'
 
+/** offline component */
+import OfflineSupport from './components/OfflineSupport'
+
 /** firebase */
 import firebase from 'firebase/app'
 import {credentials} from './credentials'
@@ -29,6 +32,7 @@ const routes = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
+        <OfflineSupport/>
         <Switch>
           <Route exact path="/" component={App} />
           <Route exact path="/list" component={List} />

@@ -4,11 +4,12 @@
   "private": true,
   "author": "Glauro Q Juliani",
   "scripts": {
-    "dev": "react-scripts start src",
-    "build": "react-scripts build src",
+    "dev": "react-scripts start src && cra-append-sw --mode dev ./public/service-worker-custom.js",
+    "build": "react-scripts build src && cra-append-sw --skip-compile ./public/service-worker-custom.js",
     "deploy": "yarn build && firebase deploy"
   },
   "dependencies": {
+    "cra-append-sw": "^2.6.1",
     "date-fns": "^1.30.1",
     "firebase": "^6.3.5",
     "react": "^16.9.0",

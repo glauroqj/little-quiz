@@ -147,6 +147,26 @@ html, body {
       }
     }
   }
+
+  /* offline */
+  .alert-offline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e51c23;
+    color: #fff;
+    letter-spacing: 1px;
+    font-size: 1.2em;
+    -webkit-transition: height 0.3s;
+    transition: height 0.3s;
+    visibility: visible;
+    height: 40px;
+  
+    &.hide {
+      visibility: hidden;
+      height: 0px;
+    }
+  }
 }
 
 
