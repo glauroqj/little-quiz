@@ -1,5 +1,5 @@
 import { RANKING } from './rankingActionsType'
-import { fetchListMiddleware } from '../../middlewares/ranking/rankingMiddleware'
+// import { fetchListMiddleware } from '../../middlewares/ranking/rankingMiddleware'
 
 const fetchStarting = () => ({
   type: RANKING.FETCH_RANKING_STARTING
@@ -13,13 +13,12 @@ const fetchError = () => ({
 })
 
 /** thunk */
-const fetchListService = () => {
+const fetchListService = (list) => {
   return async (dispatch, getState) => {
     dispatch( fetchStarting() )
-    console.log('< RANKING ACTION >')
-    const list = await fetchListMiddleware()
     if (list) dispatch( fetchDone(list) )
-    if ('error') dispatch( fetchError() )
+    if (!list) dispatch( fetchError() )
+    // const list = await fetchListMiddleware()
   }
 }
 

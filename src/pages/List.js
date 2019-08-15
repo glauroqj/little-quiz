@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
 
+/** firebase */
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+
+/** components */
 import Loading from '../components/Loading'
 
 /** actions */
@@ -10,43 +15,26 @@ const List = (props) => {
   const { list, front, back, loading } = props.state.ranking
   const dispatch = useDispatch()
 
-  console.log('< STORE > ', props.state)
-
-  // const [state, setState] = useState({
-  //   list: [],
-  //   front: [],
-  //   back: [],
-  //   loading: true
-  // })
-
   useEffect(() => {
 
-    dispatch( fetchListService() )
-
-    // const db = firebase.firestore()
+    const db = firebase.firestore()
     
-    // db.collection('users')
-    // .where('score', '<', 20)
-    // .orderBy('score', 'desc')
-    // .onSnapshot(querySnapshot => {
-    //   let list = []
+    db.collection('users')
+    .where('score', '<', 20)
+    .orderBy('score', 'desc')
+    .onSnapshot(querySnapshot => {
+      let list = []
 
-    //   querySnapshot.forEach(doc => list.push(doc.data()))
+      querySnapshot.forEach(doc => list.push(doc.data()))
 
-    //   if (state.list.length < list.length) {
-    //     console.log('< REAL TIME DATA : OK > ')
-    //     setState({
-    //       ...state,
-    //       list,
-    //       front: list.filter(item => item.type === 'front'), /*list.filter(item => item.type === 'front').sort((item1, item2) => (item1.score < item2.score) ? 1 : -1)*/
-    //       back: list.filter(item => item.type === 'back'),
-    //       loading: false
-    //     })
-    //   }
-    // },
-    // (error) => { 
-    //   console.log('< REAL TIME DATA : ERROR > ', error)
-    // })
+      /** call action */
+      console.log('< REAL TIME DATA : OK > ')
+      dispatch( fetchListService(list) )
+    },
+    (error) => { 
+      console.warn('< REAL TIME DATA : ERROR > ', error)
+      fetchListService(false)
+    })
 
   }, [])
 

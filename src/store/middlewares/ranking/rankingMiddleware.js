@@ -1,32 +1,32 @@
-import firebase from 'firebase/app'
-import 'firebase/firestore'
+// import firebase from 'firebase/app'
+// import 'firebase/firestore'
 
-const fetchListMiddleware = async () => {
-  const db = firebase.firestore()
-  // console.log('Check FETCH LIST START: ',userId )
-  return new Promise((resolve) => {
+// const fetchListMiddleware = async () => {
+//   const db = firebase.firestore()
+//   // console.log('Check FETCH LIST START: ',userId )
+//   return new Promise((resolve) => {
     
-    db.collection('users')
-    .where('score', '<', 20)
-    .orderBy('score', 'desc')
-    .onSnapshot(querySnapshot => {
-      let list = []
+//     db.collection('users')
+//     .where('score', '<', 20)
+//     .orderBy('score', 'desc')
+//     .onSnapshot(querySnapshot => {
+//       let list = []
 
-      querySnapshot.forEach(doc => list.push(doc.data()))
+//       querySnapshot.forEach(doc => list.push(doc.data()))
 
-      resolve(list)
-    },
-    (error) => {
-      console.log('< REAL TIME DATA : ERROR > ', error)
-      resolve('error')
-    })
+//       resolve(list)
+//     },
+//     (error) => {
+//       console.log('< REAL TIME DATA : ERROR > ', error)
+//       resolve('error')
+//     })
 
-  })
-}
+//   })
+// }
 
-export {
-  fetchListMiddleware
-}
+// export {
+//   fetchListMiddleware
+// }
 
 
 
