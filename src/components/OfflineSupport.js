@@ -9,7 +9,7 @@ const OfflineSupport = () => {
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
 
-        // if (window.location.hostname === 'localhost') return false
+        if (window.location.hostname === 'localhost') return false
 
         navigator.serviceWorker.register('/service-worker-custom.js', { scope: '/', updateViaCache: 'imports' })
         .then((registration) => {

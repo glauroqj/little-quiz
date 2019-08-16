@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
+/** components */
 import QuizForm from '../components/QuizForm'
 
 const App = () => {
