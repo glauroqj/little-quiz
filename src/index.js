@@ -1,7 +1,12 @@
+import React from 'react'
 import ReactDOM from 'react-dom'
 
+/** redux */
+import { Provider } from 'react-redux'
+import { store } from './store/store'
+
 /** routes */
-import routes from './routes/routes'
+import Routes from './routes/Routes'
 
 /** firebase */
 import firebase from 'firebase/app'
@@ -12,7 +17,12 @@ import './assets/css/main.scss'
 
 firebase.initializeApp(credentials)
 
-ReactDOM.render(routes() ,document.getElementById('root'))
+ReactDOM.render(
+  <Provider store={store}>
+    <Routes />
+  </Provider>,
+  document.getElementById('root')
+)
 
 /**
   DOC react-redux: https://react-redux.js.org/
