@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 
 /** actions */
 import { loginService } from '../store/actions/user/userActions'
 
-const Login = (props) => {
+const Login = ({history}) => {
   const dispatch = useDispatch()
-  const { history } = props
   const [state, setState] = useState({
     email: '',
     password: '',
