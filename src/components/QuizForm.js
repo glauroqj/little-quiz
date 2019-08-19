@@ -10,7 +10,7 @@ import {
 
 import Loading from '../components/Loading'
 
-const QuizForm = ({ player, type, reset }) => {
+const QuizForm = ({ player, email, type, reset }) => {
 
   const [form, setForm] = useState({
     questions: require(`../questions/${type}`)[type],
@@ -65,6 +65,7 @@ const QuizForm = ({ player, type, reset }) => {
       /** send to firestore */
       const payload = {
         player,
+        email,
         time: setFinishTimeSeconds,
         score: increaseScore,
         start: form.startTime,
@@ -93,10 +94,10 @@ const QuizForm = ({ player, type, reset }) => {
   return (
     <div className="quiz-form">
 
-      <ol className="breadcrumb">
+      {/* <ol className="breadcrumb">
         <li className="breadcrumb-item active">SCORE: { form.score }</li>
         <li className="breadcrumb-item active">STEP: { form.actualStep }</li>
-      </ol>
+      </ol> */}
 
       {form.finishTime === '' &&
       form.questions.length > 0 &&

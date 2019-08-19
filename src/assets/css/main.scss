@@ -36,11 +36,11 @@ html, body {
   font-family: "Neucha", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   background-color: var(--primary);
   letter-spacing: 1px;
-  overflow-x: hidden;
+  // overflow-x: hidden;
 
   .App {
     color: #fff;
-    margin-top: 10%;
+    margin-top: 2%;
 
     h1 {
       font-size: 4.5rem;
@@ -76,6 +76,43 @@ html, body {
     h1 {
       font-size: 4.5rem;
       margin-bottom: 40px;
+    }
+
+    .ranking-list {
+
+      ol {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        
+        span {
+          color: var(--dark);
+
+          &.name {
+            max-width: 150px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+          }
+          &.email {
+            max-width: 150px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            font-weight: 300;
+          }
+          &.time {
+            font-weight: 300;
+          }
+          &.score {
+            color: #fff;
+            font-size: 1em;
+          }
+        }
+      }
+
     }
   }
 

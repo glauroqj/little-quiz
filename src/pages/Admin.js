@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
-const Admin = () => {
-  const [state, setState] = useState({
-    loading: false
-  })
+const Admin = ({history}) => {
+  // const [state, setState] = useState({
+  //   loading: false
+  // })
 
-  useEffect(() => {
-    console.log('< ADMIN : STATE > ', state)
-  })
+  // useEffect(() => {
+  //   console.log('< ADMIN : STATE > ', state)
+  // })
 
 
   return (
@@ -17,6 +17,13 @@ const Admin = () => {
         <div className="row">
           <div className="col-sm-6 ml-auto mr-auto">
             <h1>Admin</h1>
+            <button
+              type="button"
+              className="btn btn-lg btn-success"
+              onClick={ () => history.push('/') }
+            >
+              HOME
+            </button>
           </div>
         </div>
 

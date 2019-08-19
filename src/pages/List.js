@@ -53,14 +53,18 @@ const List = (props) => {
         )}
 
         {!loading && (
-          <div className="row animated fadeIn">
+          <div className="row ranking-list animated fadeIn">
 
             <div className="col-sm-6">
               <h4 className="display-5 text-center">Ranking Front-End</h4>
 
-              {front.map((item, index) => (
-                <ol key={`${item.player}${item.score}`} className="breadcrumb animated fadeInLeft">
-                  <li className="breadcrumb-item active">{index+1} - {item.player} - {item.score} - {item.time}</li>
+              {front.length > 0 && 
+                front.map((item, index) => (
+                <ol key={`${item.player}${item.email}`} className="breadcrumb animated fadeInLeft">
+                  <span className="name">{index+1} {item.player}</span>
+                  <span className="email">{item.email}</span>
+                  <span className="time">{item.time}</span>
+                  <span class="score badge badge-success badge-pill">{item.score}</span>
                 </ol>
               ))
               .filter((item, index) => index < 10)
@@ -70,9 +74,13 @@ const List = (props) => {
             <div className="col-sm-6">
               <h4 className="display-5 text-center">Ranking Back-End</h4>
 
-              {back.map((item, index) => (
-                <ol key={`${item.player}${item.score}`} className="breadcrumb animated fadeInRight">
-                  <li className="breadcrumb-item active">{index+1} - {item.player} - {item.score} - {item.time}</li>
+              {back.length > 0 && 
+                back.map((item, index) => (
+                <ol key={`${item.player}${item.email}`} className="breadcrumb animated fadeInRight">
+                  <span className="name">{index+1} {item.player}</span>
+                  <span className="email">{item.email}</span>
+                  <span className="time">{item.time}</span>
+                  <span class="score badge badge-success badge-pill">{item.score}</span>
                 </ol>
               ))
               .filter((item, index) => index < 10)
