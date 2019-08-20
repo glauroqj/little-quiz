@@ -8,7 +8,9 @@ import {
   differenceInMilliseconds
 } from 'date-fns'
 
+/** components */
 import Loading from '../components/Loading'
+import Timer from '../components/Timer'
 
 const QuizForm = ({ player, email, type, reset }) => {
 
@@ -24,7 +26,7 @@ const QuizForm = ({ player, email, type, reset }) => {
   })
 
   useEffect(() => {
-    console.log('< QUIZ FORM : STATE > ', form)
+    // console.log('< QUIZ FORM : STATE > ', form)
 
     if (form.steps === '') {
       setForm({
@@ -94,6 +96,10 @@ const QuizForm = ({ player, email, type, reset }) => {
   return (
     <div className="quiz-form">
 
+      <Timer
+        seconds={180}
+        reset={ () => reset() }
+      />
       {/* <ol className="breadcrumb">
         <li className="breadcrumb-item active">SCORE: { form.score }</li>
         <li className="breadcrumb-item active">STEP: { form.actualStep }</li>

@@ -151,6 +151,8 @@ html, body {
             border-radius: 50%;
           }
           p {
+            width: 100%;
+            text-align: center;
           }
         }
       }
@@ -180,6 +182,16 @@ html, body {
         .list-group-item {
           color: var(--gray-dark);
           font-size: 1.8em;
+        }
+      }
+    }
+
+    .timer {
+
+      .progress {
+
+        .progress-bar {
+          // width: 100%;
         }
       }
     }

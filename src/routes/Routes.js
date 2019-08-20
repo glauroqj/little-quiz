@@ -27,7 +27,7 @@ const Routes = (props) => {
   })
 
   useEffect(() => {
-    async function checkUser() {
+    const checkUser = async () => {
       await dispatch( fetchUserService() )
       setState({
         loading: false

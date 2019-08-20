@@ -13,7 +13,7 @@ const App = () => {
   })
 
   useEffect(() => {
-    console.log('< APP : STATE > ', state)
+    // console.log('< APP : STATE > ', state)
   })
 
   const resetForm = () => {
@@ -53,12 +53,13 @@ const App = () => {
 
           <div className="col-sm-6 ml-auto mr-auto">
             <label className="lead">Algumas Regrinhas</label>
-            <blockquote class="blockquote">
-              <p class="mb-1">Cada participante só poderá jogar uma vez</p>
-              <p class="mb-1">Após preencher os campos, escolha uma modalidade</p>
-              <p class="mb-1">Responda apenas clickando na opção</p>
-              <p class="mb-1">No final você terá seu resultado!</p>
-              <footer class="blockquote-footer">Good luck have fun!</footer>
+            <blockquote className="blockquote">
+              <p className="mb-1">- Cada participante só poderá jogar uma vez</p>
+              <p className="mb-1">- Após preencher os campos, escolha uma modalidade</p>
+              <p className="mb-1">- Responda apenas clickando na opção</p>
+              <p className="mb-1">- Você terá 3 minutos para terminar o quiz</p>
+              <p className="mb-1">- No final você terá seu resultado!</p>
+              <footer className="blockquote-footer">Good luck have fun!</footer>
             </blockquote>
           </div>
 
@@ -106,7 +107,7 @@ const App = () => {
                         checked={ state.type === 'front' }
                         onChange={ e => { setState({ ...state, type: e.target.value }) } }
                       />
-                      Front-End
+                      Front-End [ javascript, html, css ]
                     </label>
                   </div>
                   <div className="" onChange={ e => { setState({ ...state, type: e.target.value }) } }>
@@ -118,7 +119,19 @@ const App = () => {
                         checked={ state.type === 'back' }
                         onChange={ e => { setState({ ...state, type: e.target.value }) } }
                       />
-                      Back-End
+                      Back-End [ php ]
+                    </label>
+                  </div>
+                  <div className="" onChange={ e => { setState({ ...state, type: e.target.value }) } }>
+                    <label className="form-check-label">
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
+                        value="others"
+                        checked={ state.type === 'others' }
+                        onChange={ e => { setState({ ...state, type: e.target.value }) } }
+                      />
+                      Aventureiro [ filmes, curiosidades entre outros ]
                     </label>
                   </div>
                   {state.type !== false && (
