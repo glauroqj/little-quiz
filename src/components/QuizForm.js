@@ -5,6 +5,7 @@ import 'firebase/firestore'
 
 import {
   format,
+  differenceInSeconds,
   differenceInMilliseconds
 } from 'date-fns'
 
@@ -68,6 +69,7 @@ const QuizForm = ({ player, email, type, reset }) => {
       const payload = {
         player,
         email,
+        seconds: differenceInSeconds(setFinishTime, startTime),
         time: setFinishTimeSeconds,
         score: increaseScore,
         start: form.startTime,
@@ -96,10 +98,13 @@ const QuizForm = ({ player, email, type, reset }) => {
   return (
     <div className="quiz-form">
 
-      <Timer
-        seconds={180}
-        reset={ () => reset() }
-      />
+        {!form.finishTime && (
+          <Timer
+            seconds={10}
+            reset={ () => reset() }
+          />
+        )}
+
       {/* <ol className="breadcrumb">
         <li className="breadcrumb-item active">SCORE: { form.score }</li>
         <li className="breadcrumb-item active">STEP: { form.actualStep }</li>

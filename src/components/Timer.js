@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react'
 /** utils */
 import { formatSeconds } from '../utils/formatTime'
 
+let loop = null
 const Timer = ({ seconds, reset }) => {
-
   const [state, setState] = useState({
     time: seconds,
     porcentage: 100
@@ -21,25 +21,30 @@ const Timer = ({ seconds, reset }) => {
         time: formatSeconds(seconds)
       })
 
-      const loop = setInterval(() => {
+      loop = setInterval(() => {
         setState({
           ...state,
 
           time: formatSeconds(expire),
           porcentage: Math.floor(expire * 100 / seconds)
         })
+
         expire--
 
         if (expire === -1) {
           clearInterval(loop)
           // console.log('< EXPIRED TIME >')
           reset()
-        }  
+        }
       }, 1000)
 
     }
     countdown()
 
+    return () => {
+      // console.log('< will unmount >')
+      clearInterval(loop)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
