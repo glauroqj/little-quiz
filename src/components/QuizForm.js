@@ -100,7 +100,7 @@ const QuizForm = ({ player, email, type, reset }) => {
 
         {!form.finishTime && (
           <Timer
-            seconds={10}
+            seconds={180}
             reset={ () => reset() }
           />
         )}
