@@ -106,4 +106,20 @@ export const back = [
           "photo": require("../assets/images/baricio.png")
         }
     },
+    {
+        "ask": "No PHP 7.2, qual será o resultado deste script?",
+        "image": require("../assets/images/back/php_question_array_compare.png"),
+        "options": [
+            "Erro de passagem de string para construtor",
+            "Erro de acesso de propriedade privada",
+            "10",
+            "\"10\""
+        ],
+        "correct": "10",
+        "value": 3,
+        "author": {
+          "name": "Evandro Ishy",
+          "photo": require("../assets/images/thewrongway.png")
+        }
+    },
 ]
