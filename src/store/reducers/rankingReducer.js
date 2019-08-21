@@ -6,6 +6,7 @@ const initialState = {
   list: [],
   front: [],
   back: [],
+  others: [],
   loading: true
 }
 
@@ -19,6 +20,7 @@ const ranking = (state = initialState, action) => {
         list: action.list,
         front: action.list.filter(item => item.type === 'front'),
         back: action.list.filter(item => item.type === 'back'),
+        others: action.list.filter(item => item.type === 'others'),
         loading: false
       }
     default:

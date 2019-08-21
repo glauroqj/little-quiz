@@ -12,7 +12,7 @@ import Loading from '../components/Loading'
 import { fetchListService } from '../store/actions/ranking/rankingActions'
 
 const List = (props) => {
-  const { front, back, loading } = props.state.ranking
+  const { front, back, others, loading } = props.state.ranking
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const List = (props) => {
 
   return (
     <div className="List animated fadeIn">
-      <div className="container">
+      <div className="container-fluid">
 
         <div className="row">
           <div className="col-sm-8 ml-auto mr-auto">
@@ -55,32 +55,48 @@ const List = (props) => {
         {!loading && (
           <div className="row ranking-list animated fadeIn">
 
-            <div className="col-sm-6">
+            <div className="col-sm-4">
               <h4 className="display-5 text-center">Ranking Front-End</h4>
 
               {front.length > 0 && 
                 front.map((item, index) => (
-                <ol key={`${item.player}${item.email}`} className="breadcrumb animated fadeInLeft">
+                <ol key={`${item.player}${item.email}`} className="breadcrumb animated fadeInUp">
                   <span className="name">{index+1} {item.player}</span>
                   <span className="email">{item.email}</span>
                   <span className="time">{item.time}</span>
-                  <span class="score badge badge-success badge-pill">{item.score}</span>
+                  <span className="score badge badge-success badge-pill">{item.score}</span>
                 </ol>
               ))
               .filter((item, index) => index < 10)
               }
             </div>
 
-            <div className="col-sm-6">
+            <div className="col-sm-4">
               <h4 className="display-5 text-center">Ranking Back-End</h4>
 
               {back.length > 0 && 
                 back.map((item, index) => (
-                <ol key={`${item.player}${item.email}`} className="breadcrumb animated fadeInRight">
+                <ol key={`${item.player}${item.email}`} className="breadcrumb animated fadeInUp">
                   <span className="name">{index+1} {item.player}</span>
                   <span className="email">{item.email}</span>
                   <span className="time">{item.time}</span>
-                  <span class="score badge badge-success badge-pill">{item.score}</span>
+                  <span className="score badge badge-success badge-pill">{item.score}</span>
+                </ol>
+              ))
+              .filter((item, index) => index < 10)
+              }
+            </div>
+
+            <div className="col-sm-4">
+              <h4 className="display-5 text-center">Ranking Aventureiro</h4>
+
+              {others.length > 0 && 
+                others.map((item, index) => (
+                <ol key={`${item.player}${item.email}`} className="breadcrumb animated fadeInUp">
+                  <span className="name">{index+1} {item.player}</span>
+                  <span className="email">{item.email}</span>
+                  <span className="time">{item.time}</span>
+                  <span className="score badge badge-success badge-pill">{item.score}</span>
                 </ol>
               ))
               .filter((item, index) => index < 10)
