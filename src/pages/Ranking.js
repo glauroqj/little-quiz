@@ -43,7 +43,7 @@ const Ranking = props => {
       <div className="container-fluid">
 
         <div className="row">
-          <div className="col-sm-8 ml-auto mr-auto">
+          <div className="col-sm-12 text-center">
             <h1>Sympla Quiz Ranking</h1>
           </div>
         </div>
