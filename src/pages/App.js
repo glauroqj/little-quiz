@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react'
 /** components */
 import QuizForm from '../components/QuizForm'
 
+/** utils */
+import { isValidEmail } from '../utils/validates'
+
 const App = () => {
 
   const [state, setState] = useState({
@@ -88,8 +91,10 @@ const App = () => {
                   className="form-control form-control-lg lead"
                   id="email"
                   placeholder="pedrinho@email.com"
+                  required
                   value={ state.email }
                   onChange={ e => { setState({ ...state, email: e.target.value }) } }
+                  onBlur={ e => { setState({ ...state, email: isValidEmail(e.target.value) ? e.target.value : '' }) } }
                 />
               </div>
 
