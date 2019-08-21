@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import { connect, useDispatch } from 'react-redux'
+
+/** firebase */
+import firebase from 'firebase/app'
+import 'firebase/firestore'
 
 /** components */
 import QuizForm from '../components/QuizForm'
@@ -6,7 +11,12 @@ import QuizForm from '../components/QuizForm'
 /** utils */
 import { isValidEmail } from '../utils/validates'
 
-const App = () => {
+/** actions */
+import { fetchStockService } from '../store/actions/stock/stockActions'
+
+const App = props => {
+  const { headphones, mugs, shocks } = props.state.stock.quantity
+  const dispatch = useDispatch()
 
   const [state, setState] = useState({
     name: '',
@@ -16,8 +26,20 @@ const App = () => {
   })
 
   useEffect(() => {
-    // console.log('< APP : STATE > ', state)
-  })
+    
+    const db = firebase.firestore()
+
+    db.collection('stock').doc('quantity')
+    .onSnapshot(doc => {
+      console.log('< STOCK : OK > ' )
+      dispatch( fetchStockService(doc.data()) )
+    },
+    (error) => { 
+      console.warn('< REAL TIME DATA : ERROR > ', error)
+      fetchStockService(false)
+    })
+
+  }, [dispatch])
 
   const resetForm = () => {
     setState({
@@ -46,6 +68,7 @@ const App = () => {
                 player={state.name}
                 email={state.email}
                 type={state.type}
+                stock={props.state.stock.quantity}
                 reset={ resetForm }
               />
             </div>
@@ -64,6 +87,15 @@ const App = () => {
               <p className="mb-1">- No final você terá seu resultado!</p>
               <footer className="blockquote-footer">Good luck have fun!</footer>
             </blockquote>
+
+            <div className="mt-3">
+              <label className="lead">Nossos brindes</label>
+              <blockquote className="blockquote">
+                <p className="mb-1"><span className="badge badge-pill badge-primary">{headphones}</span> Headphones</p>
+                <p className="mb-1"><span className="badge badge-pill badge-primary">{mugs}</span> Canecas</p>
+                <p className="mb-1"><span className="badge badge-pill badge-primary">{shocks}</span> Meias</p>
+              </blockquote>
+            </div>
           </div>
 
           <div className="col-sm-6 ml-auto mr-auto">
@@ -162,4 +194,15 @@ const App = () => {
   )
 }
 
-export default App
+const mapStateToProps = (state, ownProps) => ({
+  state
+})
+
+const mapDispatchToProps = dispatch => ({
+  fetchStockService: () => dispatch( fetchStockService() )
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)

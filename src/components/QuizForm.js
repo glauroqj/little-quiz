@@ -13,7 +13,7 @@ import {
 import Loading from '../components/Loading'
 import Timer from '../components/Timer'
 
-const QuizForm = ({ player, email, type, reset }) => {
+const QuizForm = ({ player, email, type, stock, reset }) => {
 
   const [form, setForm] = useState({
     questions: require(`../questions/${type}`)[type],
@@ -23,11 +23,12 @@ const QuizForm = ({ player, email, type, reset }) => {
     startTime: new Date(),
     finishTime: '',
     finishTimeSeconds: '',
+    bounty: false,
     loading: false
   })
 
+
   useEffect(() => {
-    // console.log('< QUIZ FORM : STATE > ', form)
 
     if (form.steps === '') {
       setForm({
@@ -39,13 +40,14 @@ const QuizForm = ({ player, email, type, reset }) => {
   }, [form])
 
   const setAnswer = async (choice, index) => {
-    console.log('< ANSWER > ', choice, index)
+    // console.log('< ANSWER > ', choice, index)
     const { questions, steps, score, finishTime, finishTimeSeconds, actualStep, startTime } = form
     const payloadAsk = questions[index]
 
     let increaseScore = score
     let setFinishTime = finishTime
     let setFinishTimeSeconds = finishTimeSeconds
+    let bounty = false
 
     if (payloadAsk.correct === choice) {
       increaseScore += payloadAsk.value
@@ -65,6 +67,7 @@ const QuizForm = ({ player, email, type, reset }) => {
 
       setFinishTimeSeconds = format(timeSeconds, 'mm:ss')
 
+      bounty = await getBounty(stock)
       /** send to firestore */
       const payload = {
         player,
@@ -74,7 +77,8 @@ const QuizForm = ({ player, email, type, reset }) => {
         score: increaseScore,
         start: form.startTime,
         finish: setFinishTime,
-        type
+        type,
+        bounty
       }
 
       await db.collection('users').add(payload)
@@ -82,6 +86,13 @@ const QuizForm = ({ player, email, type, reset }) => {
         console.log('< SAVED IN FIREBASE >')
       })
       .catch(error => console.warn('< PROBLEM TO SAVE IN DB > ', error))
+
+
+      if (bounty !== 'Algo deu errado, verifique o estoque :(') {
+        await db.collection('stock').doc('quantity').set({
+          [bounty]: stock[bounty] - 1
+        }, {merge: true})
+      }
     }
 
     setForm({
@@ -90,9 +101,51 @@ const QuizForm = ({ player, email, type, reset }) => {
       actualStep: (actualStep+1),
       finishTime: setFinishTime,
       finishTimeSeconds: setFinishTimeSeconds,
+      bounty,
       loading: false
     })
 
+  }
+
+
+  const getBounty = perks => {
+    return new Promise(resolve => {
+      let result = randomArray(perks)
+
+      /** verify stock */
+      if (stock[result] !== 0) resolve(result)
+
+      if (stock[result] === 0) {
+        let count = 0
+
+        const tryAgain = setInterval(() => {
+
+          result = randomArray(perks)
+
+          if (stock[result] !== 0) {
+            clearInterval(tryAgain)
+            resolve(result)
+          }
+
+          if (count === 4) {
+            clearInterval(tryAgain)
+            resolve('Algo deu errado, verifique o estoque :(')
+          }
+
+          count++
+        }, 500)
+
+      }
+
+    })
+  }
+
+  const randomArray = perks => {
+    const arrayPerks = Object.keys(perks)
+    const rand = Math.random()
+    const totalPerks = arrayPerks.length
+    const randIndex = Math.floor(rand * totalPerks)
+    return arrayPerks[randIndex]
   }
   
   return (
@@ -170,6 +223,10 @@ const QuizForm = ({ player, email, type, reset }) => {
             <li className="list-group-item d-flex justify-content-between align-items-center">
               Time
               <span className="badge badge-primary">{ form.finishTimeSeconds }</span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between align-items-center">
+              Bounty
+              <span className="badge badge-primary">{ form.bounty }</span>
             </li>
           </ul>
           

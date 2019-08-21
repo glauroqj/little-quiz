@@ -11,7 +11,7 @@ import Loading from '../components/Loading'
 /** actions */
 import { fetchListService } from '../store/actions/ranking/rankingActions'
 
-const List = (props) => {
+const List = props => {
   const { front, back, others, loading } = props.state.ranking
   const dispatch = useDispatch()
 
@@ -116,7 +116,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchListService: () => dispatch( fetchListService() )
+  fetchListService: (list) => dispatch( fetchListService(list) )
 })
 
 export default connect(
