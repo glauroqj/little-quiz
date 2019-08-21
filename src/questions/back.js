@@ -119,7 +119,7 @@ export const back = [
         "value": 3,
         "author": {
           "name": "Evandro Ishy",
-          "photo": require("../assets/images/thewrongway.png")
+          "photo": require("../assets/images/evandro.jpg")
         }
     },
 ]

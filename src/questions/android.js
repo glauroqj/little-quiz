@@ -7,7 +7,7 @@ export const android = [
     "value": 2,
     "author": {
       "name": "Felipe Miranda",
-      "photo": require("../assets/images/felipe.jpg")
+      "photo": require("../assets/images/felipe.png")
     }
   },
   {
@@ -18,7 +18,7 @@ export const android = [
     "value": 3,
     "author": {
       "name": "Luis Henrique",
-      "photo": require("../assets/images/luis.jpg")
+      "photo": require("../assets/images/luis.png")
     }
   },
   {
@@ -29,7 +29,7 @@ export const android = [
     "value": 1,
     "author": {
       "name": "Duanniston",
-      "photo": require("../assets/images/duanniston.jpg")
+      "photo": require("../assets/images/duanniston.png")
     }
   },
   {
@@ -40,7 +40,7 @@ export const android = [
     "value": 1,
     "author": {
       "name": "Artur Ferreira",
-      "photo": require("../assets/images/artur.jpg")
+      "photo": require("../assets/images/artur.png")
     }
   },
   {
@@ -51,7 +51,7 @@ export const android = [
     "value": 1,
     "author": {
       "name": "Vladimir Petrić",
-      "photo": require("../assets/images/vlad.jpg")
+      "photo": require("../assets/images/vlad.png")
     }
   },
   {
@@ -62,7 +62,7 @@ export const android = [
     "value": 1,
     "author": {
       "name": "Felipe Miranda",
-      "photo": require("../assets/images/felipe.jpg")
+      "photo": require("../assets/images/felipe.png")
     }
   },
   {
@@ -73,7 +73,7 @@ export const android = [
     "value": 1,
     "author": {
       "name": "Luis Henrique",
-      "photo": require("../assets/images/luis.jpg")
+      "photo": require("../assets/images/luis.png")
     }
   }, 
   {
@@ -84,7 +84,7 @@ export const android = [
     "value": 2,
     "author": {
       "name": "Duanniston",
-      "photo": require("../assets/images/duanniston.jpg")
+      "photo": require("../assets/images/duanniston.png")
     }
   },
   {
@@ -95,7 +95,7 @@ export const android = [
     "value": 2,
     "author": {
       "name": "Artur Ferreira",
-      "photo": require("../assets/images/artur.jpg")
+      "photo": require("../assets/images/artur.png")
     }
   },
   {
@@ -106,7 +106,7 @@ export const android = [
     "value": 3,
     "author": {
       "name": "Vladimir Petrić",
-      "photo": require("../assets/images/vlad.jpg")
+      "photo": require("../assets/images/vlad.png")
     }
   },
 ]

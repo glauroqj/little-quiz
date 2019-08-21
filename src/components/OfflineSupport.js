@@ -5,11 +5,10 @@ const OfflineSupport = () => {
   const[state, setState] = useState({ status: true })
 
   useEffect(() => {
-
+    
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-
-        if (window.location.hostname === 'localhost') return false
+      
+      if (window.location.hostname !== 'localhost') {
 
         navigator.serviceWorker.register('/service-worker-custom.js', { scope: '/', updateViaCache: 'imports' })
         .then((registration) => {
@@ -17,18 +16,18 @@ const OfflineSupport = () => {
         }).catch((registrationError) => {
           console.log('< SERVICE WORKER : FAIL >', registrationError)
         })
+        
+        navigator.serviceWorker.addEventListener('message', event => {
+          const { status } = state
+          // console.log('Listener SERVICE WORKER: ', event.data)
+          if (status !== event.data.isOnline) {
+            setState({
+              status: event.data.isOnline
+            })
+          }
+        })
+      }
 
-      })
-
-      navigator.serviceWorker.addEventListener('message', event => {
-        const { status } = state
-        // console.log('Listener SERVICE WORKER: ', event.data)
-        if (status !== event.data.isOnline) {
-          setState({
-            status: event.data.isOnline
-          })
-        }
-      })
     }
 
   }, [state])
