@@ -11,7 +11,7 @@ import Loading from '../components/Loading'
 /** actions */
 import { fetchListService } from '../store/actions/ranking/rankingActions'
 
-const List = props => {
+const Ranking = props => {
   const { front, back, others, loading } = props.state.ranking
   const dispatch = useDispatch()
 
@@ -60,7 +60,7 @@ const List = props => {
 
               {front.length > 0 && 
                 front.map((item, index) => (
-                <ol key={`${item.player}${item.email}`} className="breadcrumb animated fadeInUp">
+                <ol key={`${item.player}${item.email}`} className="breadcrumb animated fadeInUp" title={`NAME: ${item.player} \nEMAIL: ${item.email} \nBOUNTY: ${item.bounty}`}>
                   <span className="name">{index+1} {item.player}</span>
                   <span className="email">{item.email}</span>
                   <span className="time">{item.time}</span>
@@ -76,7 +76,7 @@ const List = props => {
 
               {back.length > 0 && 
                 back.map((item, index) => (
-                <ol key={`${item.player}${item.email}`} className="breadcrumb animated fadeInUp">
+                <ol key={`${item.player}${item.email}`} className="breadcrumb animated fadeInUp" title={`NAME: ${item.player} \nEMAIL: ${item.email} \nBOUNTY: ${item.bounty}`}>
                   <span className="name">{index+1} {item.player}</span>
                   <span className="email">{item.email}</span>
                   <span className="time">{item.time}</span>
@@ -92,7 +92,7 @@ const List = props => {
 
               {others.length > 0 && 
                 others.map((item, index) => (
-                <ol key={`${item.player}${item.email}`} className="breadcrumb animated fadeInUp">
+                <ol key={`${item.player}${item.email}`} className="breadcrumb animated fadeInUp" title={`NAME: ${item.player} \nEMAIL: ${item.email} \nBOUNTY: ${item.bounty}`}>
                   <span className="name">{index+1} {item.player}</span>
                   <span className="email">{item.email}</span>
                   <span className="time">{item.time}</span>
@@ -122,7 +122,7 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(List)
+)(Ranking)
 
 /*
   DOC: https://firebase.google.com/docs/firestore/query-data/listen
