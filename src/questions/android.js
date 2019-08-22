@@ -22,7 +22,7 @@ export const android = [
     }
   },
   {
-    "ask": "Qual é a IDE utilizada para desenvolver uma aplicação Android?",
+    "ask": "Qual é a IDE oficial utilizada para desenvolver uma aplicação Android?",
     "image": "",
     "options": ["xCode", "Sublime", "Android Studio", "Eclipse"],
     "correct": "Android Studio",
@@ -66,7 +66,7 @@ export const android = [
     }
   },
   {
-    "ask": "Se você quiser aumentar o espaço em branco entre os widgets, você precisará usar o...",
+    "ask": "Se você quiser aumentar o espaço em branco entre os widgets, você pode usar o...",
     "image": "",
     "options": ["android:digits", "android:capitalize", "android:autoText", "android:padding"],
     "correct": "android:padding",
