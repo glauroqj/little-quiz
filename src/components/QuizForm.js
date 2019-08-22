@@ -33,6 +33,7 @@ const QuizForm = ({ player, email, type, stock, reset }) => {
     if (form.steps === '') {
       setForm({
         ...form,
+        questions: form.questions.sort(() => Math.random() - 0.5 ),
         steps: form.questions.length
       })
     }
