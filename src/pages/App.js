@@ -164,6 +164,18 @@ const App = props => {
                       <input
                         className="form-check-input"
                         type="checkbox"
+                        value="android"
+                        checked={ state.type === 'android' }
+                        onChange={ e => { setState({ ...state, type: e.target.value }) } }
+                      />
+                      Android
+                    </label>
+                  </div>
+                  <div className="" onChange={ e => { setState({ ...state, type: e.target.value }) } }>
+                    <label className="form-check-label">
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
                         value="others"
                         checked={ state.type === 'others' }
                         onChange={ e => { setState({ ...state, type: e.target.value }) } }

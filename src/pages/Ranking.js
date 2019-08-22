@@ -12,7 +12,7 @@ import Loading from '../components/Loading'
 import { fetchListService } from '../store/actions/ranking/rankingActions'
 
 const Ranking = props => {
-  const { front, back, others, loading } = props.state.ranking
+  const { front, back, android, others, loading } = props.state.ranking
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const Ranking = props => {
       console.log('< REAL TIME DATA : OK > ')
       dispatch( fetchListService(list) )
     },
-    (error) => { 
+    (error) => {
       console.warn('< REAL TIME DATA : ERROR > ', error)
       fetchListService(false)
     })
@@ -55,48 +55,64 @@ const Ranking = props => {
         {!loading && (
           <div className="row ranking-list animated fadeIn">
 
-            <div className="col-sm-4">
+            <div className="col-sm-3">
               <h4 className="display-5 text-center">Ranking Front-End</h4>
 
               {front.length > 0 && 
                 front.map((item, index) => (
                 <ol key={`${item.player}${item.email}`} className="breadcrumb animated fadeInUp" title={`NAME: ${item.player} \nEMAIL: ${item.email} \nBOUNTY: ${item.bounty}`}>
                   <span className="name">{index+1} {item.player}</span>
-                  <span className="email">{item.email}</span>
+                  {/* <span className="email">{item.email}</span> */}
                   <span className="time">{item.time}</span>
-                  <span className="score badge badge-success badge-pill">{item.score}</span>
+                  <span className="score badge badge-success badge-pill">{`${item.score} / 20`}</span>
                 </ol>
               ))
               .filter((item, index) => index < 10)
               }
             </div>
 
-            <div className="col-sm-4">
+            <div className="col-sm-3">
               <h4 className="display-5 text-center">Ranking Back-End</h4>
 
               {back.length > 0 && 
                 back.map((item, index) => (
                 <ol key={`${item.player}${item.email}`} className="breadcrumb animated fadeInUp" title={`NAME: ${item.player} \nEMAIL: ${item.email} \nBOUNTY: ${item.bounty}`}>
                   <span className="name">{index+1} {item.player}</span>
-                  <span className="email">{item.email}</span>
+                  {/* <span className="email">{item.email}</span> */}
                   <span className="time">{item.time}</span>
-                  <span className="score badge badge-success badge-pill">{item.score}</span>
+                  <span className="score badge badge-success badge-pill">{`${item.score} / 20`}</span>
                 </ol>
               ))
               .filter((item, index) => index < 10)
               }
             </div>
 
-            <div className="col-sm-4">
+            <div className="col-sm-3">
+              <h4 className="display-5 text-center">Ranking Android</h4>
+
+              {android.length > 0 && 
+                android.map((item, index) => (
+                <ol key={`${item.player}${item.email}`} className="breadcrumb animated fadeInUp" title={`NAME: ${item.player} \nEMAIL: ${item.email} \nBOUNTY: ${item.bounty}`}>
+                  <span className="name">{index+1} {item.player}</span>
+                  {/* <span className="email">{item.email}</span> */}
+                  <span className="time">{item.time}</span>
+                  <span className="score badge badge-success badge-pill">{`${item.score} / 20`}</span>
+                </ol>
+              ))
+              .filter((item, index) => index < 10)
+              }
+            </div>
+
+            <div className="col-sm-3">
               <h4 className="display-5 text-center">Ranking Aventureiro</h4>
 
               {others.length > 0 && 
                 others.map((item, index) => (
                 <ol key={`${item.player}${item.email}`} className="breadcrumb animated fadeInUp" title={`NAME: ${item.player} \nEMAIL: ${item.email} \nBOUNTY: ${item.bounty}`}>
                   <span className="name">{index+1} {item.player}</span>
-                  <span className="email">{item.email}</span>
+                  {/* <span className="email">{item.email}</span> */}
                   <span className="time">{item.time}</span>
-                  <span className="score badge badge-success badge-pill">{item.score}</span>
+                  <span className="score badge badge-success badge-pill">{`${item.score} / 20`}</span>
                 </ol>
               ))
               .filter((item, index) => index < 10)

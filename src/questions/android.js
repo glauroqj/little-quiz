@@ -26,9 +26,9 @@ export const android = [
     "image": "",
     "options": ["xCode", "Sublime", "Android Studio", "Eclipse"],
     "correct": "Android Studio",
-    "value": 1,
+    "value": 2,
     "author": {
-      "name": "Duanniston",
+      "name": "Duanniston Cabral",
       "photo": require("../assets/images/duanniston.png")
     }
   },
@@ -48,7 +48,7 @@ export const android = [
     "image": "",
     "options": ["Linux Kernel", "Windows Kernel", "MAC Kernel", "Hibrid Kernel"],
     "correct": "Linux Kernel",
-    "value": 1,
+    "value": 2,
     "author": {
       "name": "Vladimir Petrić",
       "photo": require("../assets/images/vlad.png")
@@ -70,7 +70,7 @@ export const android = [
     "image": "",
     "options": ["android:digits", "android:capitalize", "android:autoText", "android:padding"],
     "correct": "android:padding",
-    "value": 1,
+    "value": 2,
     "author": {
       "name": "Luis Henrique",
       "photo": require("../assets/images/luis.png")
@@ -83,7 +83,7 @@ export const android = [
     "correct": "Android Debug Bridge",
     "value": 2,
     "author": {
-      "name": "Duanniston",
+      "name": "Duanniston Cabral",
       "photo": require("../assets/images/duanniston.png")
     }
   },

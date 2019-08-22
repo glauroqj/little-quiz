@@ -100,7 +100,7 @@ export const back = [
             "Não é possível comparar array em php"
         ],
         "correct": "Array diferentes",
-        "value": 2.5,
+        "value": 2,
         "author": {
           "name": "Fabrício Cunha",
           "photo": require("../assets/images/baricio.png")
@@ -116,10 +116,42 @@ export const back = [
             "\"10\""
         ],
         "correct": "10",
-        "value": 3,
+        "value": 2,
         "author": {
           "name": "Evandro Ishy",
           "photo": require("../assets/images/evandro.jpg")
         }
     },
+    {
+      "ask": "Qual é a funcão adotada atualmente para registro de função para autoload de classes?",
+      "image": "",
+      "options": [
+          "__autoload()",
+          "__autoload_register()",
+          "spl_autoload()",
+          "spl_autoload_register()"
+      ],
+      "correct": "spl_autoload_register()",
+      "value": 3,
+      "author": {
+        "name": "Joubert Guimarães",
+        "photo": require("../assets/images/joubert.jpg")
+      }
+  },
+  {
+    "ask": "Para que serve a constante PHP_EOL?",
+    "image": "",
+    "options": [
+        "Quebra de linha",
+        "Retornar o cursor ao início da linha",
+        "Finalizar o script",
+        "Ativar o modo de depuração"
+    ],
+    "correct": "Quebra de linha",
+    "value": 3,
+    "author": {
+      "name": "Joubert Guimarães",
+      "photo": require("../assets/images/joubert.jpg")
+    }
+  }
 ]
