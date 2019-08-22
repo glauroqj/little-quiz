@@ -12,10 +12,12 @@ import {
 /** components */
 import Loading from '../components/Loading'
 import Timer from '../components/Timer'
+import QuizFinalResult from '../components/QuizFinalResult'
 
 const QuizForm = ({ player, email, type, stock, reset }) => {
 
   const [form, setForm] = useState({
+    player,
     questions: require(`../questions/${type}`)[type],
     steps: '',
     actualStep: 1,
@@ -210,37 +212,10 @@ const QuizForm = ({ player, email, type, stock, reset }) => {
       }
 
       {form.finishTime && (
-        <div className="last-step animated zoomIn">
-          <h3>YOUR RESULT</h3>
-          <ul className="list-group">
-            <li className="list-group-item d-flex justify-content-between align-items-center">
-              Player
-              <span className="badge badge-primary">{ player }</span>
-            </li>
-            <li className="list-group-item d-flex justify-content-between align-items-center">
-              Score
-              <span className="badge badge-primary">{ form.score }</span>
-            </li>
-            <li className="list-group-item d-flex justify-content-between align-items-center">
-              Time
-              <span className="badge badge-primary">{ form.finishTimeSeconds }</span>
-            </li>
-            <li className="list-group-item d-flex justify-content-between align-items-center">
-              Bounty
-              <span className="badge badge-primary">{ form.bounty }</span>
-            </li>
-          </ul>
-          
-          <div className="mt-3">
-            <button
-              className="btn btn-block btn-success btn-lg"
-              onClick={ () => { reset() } }
-              type="button"
-            >
-              Novo Jogo
-            </button>
-          </div>
-        </div>
+        <QuizFinalResult
+          {...form}
+          reset={ () => reset() }
+        />
       )}
     </div>
   )

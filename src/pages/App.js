@@ -55,7 +55,7 @@ const App = props => {
       <div className="container">
         
         <div className="row">
-          <div className="col-sm-6 ml-auto mr-auto">
+          <div className="col-sm-12 text-center">
             <h1>Sympla Quiz</h1>
           </div>
         </div>
@@ -63,7 +63,7 @@ const App = props => {
         {/** QUIZ FORM */}
         {state.startQuiz && (
           <div className={`row animated ${state.startQuiz ? 'fadeInDown' : 'fadeOutDown'}`}>
-            <div className="col-sm-6 ml-auto mr-auto">
+            <div className="col-sm-8 ml-auto mr-auto">
               <QuizForm
                 player={state.name}
                 email={state.email}
