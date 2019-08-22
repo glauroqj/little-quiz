@@ -20,7 +20,7 @@ export const front = [
       "object, array, function"
     ],
     "correct": "function, function, function",
-    "value": 3,
+    "value": 2,
     "author": {
       "name": "Glauro Juliani",
       "photo": require("../assets/images/glauro.jpg")
@@ -34,7 +34,7 @@ export const front = [
     "value": 2,
     "author": {
         "name": "Marco Gigliarano",
-      "photo": require("../assets/images/marco.png")
+      "photo": require("../assets/images/marco.jpeg")
      }
   },
   {
@@ -45,7 +45,7 @@ export const front = [
     "value": 3,
     "author": {
         "name": "Marco Gigliarano",
-      "photo": require("../assets/images/marco.png")
+      "photo": require("../assets/images/marco.jpeg")
      }
   },
   {
@@ -56,31 +56,31 @@ export const front = [
     "value": 1,
     "author": {
         "name": "Marco Gigliarano",
-      "photo": require("../assets/images/marco.png")
+      "photo": require("../assets/images/marco.jpeg")
      }
   },
-  {
-    "ask": "Os nomes das propriedades CSS são case-sensitive?",
-    "image": require("../assets/images/front/questionMarco4.png"),
-    "options": ["Sim", "Não"],
-    "correct": "Não",
-    "value": 1,
-    "author": {
-        "name": "Marco Gigliarano",
-      "photo": require("../assets/images/marco.png")
-     }
-  },
-  {
-    "ask": "A tag <bdo> muda a direção do texto?",
-    "image": "",
-    "options": ["Sim", "Não"],
-    "correct": "Sim",
-    "value": 2,
-    "author": {
-        "name": "Marco Gigliarano",
-      "photo": require("../assets/images/marco.png")
-     }
-  },
+  // {
+  //   "ask": "Os nomes das propriedades CSS são case-sensitive?",
+  //   "image": require("../assets/images/front/questionMarco4.png"),
+  //   "options": ["Sim", "Não"],
+  //   "correct": "Não",
+  //   "value": 1,
+  //   "author": {
+  //       "name": "Marco Gigliarano",
+  //     "photo": require("../assets/images/marco.jpeg")
+  //    }
+  // },
+  // {
+  //   "ask": "A tag <bdo> muda a direção do texto?",
+  //   "image": "",
+  //   "options": ["Sim", "Não"],
+  //   "correct": "Sim",
+  //   "value": 1,
+  //   "author": {
+  //       "name": "Marco Gigliarano",
+  //     "photo": require("../assets/images/marco.jpeg")
+  //    }
+  // },
   {
     "ask": "O trecho HTML acima executa uma requisição http quando a página carrega?",
     "image": require("../assets/images/front/questionMarco6.png"),
@@ -89,7 +89,7 @@ export const front = [
     "value": 2,
     "author": {
         "name": "Marco Gigliarano",
-      "photo": require("../assets/images/marco.png")
+      "photo": require("../assets/images/marco.jpeg")
      }
   },
   {
@@ -100,7 +100,7 @@ export const front = [
     "value": 1,
     "author": {
         "name": "Marco Gigliarano",
-      "photo": require("../assets/images/marco.png")
+      "photo": require("../assets/images/marco.jpeg")
      }
   },
   {
@@ -111,18 +111,18 @@ export const front = [
     "value": 3,
     "author": {
         "name": "Marco Gigliarano",
-      "photo": require("../assets/images/marco.png")
+      "photo": require("../assets/images/marco.jpeg")
      }
   },
   {
-    "ask": "Qual é a definição Javascript para a abordagem abaixo?",
+    "ask": "Qual é a definição Javascript para a abordagem acima?",
     "image": require("../assets/images/front/caio1.png"),
     "options": ["Encapsulation", "Hoisting", "Closure", "Nesting"],
     "correct": "Closure",
-    "value": 2,
+    "value": 3,
     "author": {
       "name": "Caio Silveira",
-      "photo": require("../assets/images/caio.png")
+      "photo": require("../assets/images/caio.jpg")
     }
   },
   {
@@ -133,7 +133,7 @@ export const front = [
     "value": 2,
     "author": {
       "name": "Wagner Meyer",
-      "photo": require("../assets/images/wagao.png")
+      "photo": require("../assets/images/wagao.jpg")
     }
   }
 ]
