@@ -15,7 +15,7 @@ import { isValidEmail } from '../utils/validates'
 import { fetchStockService } from '../store/actions/stock/stockActions'
 
 const App = props => {
-  const { headphones, mugs, shocks } = props.state.stock.quantity
+  const { headphones, mugs, socks } = props.state.stock.quantity
   const dispatch = useDispatch()
 
   const [state, setState] = useState({
@@ -84,16 +84,17 @@ const App = props => {
               <p className="mb-1">- Após preencher os campos, escolha uma modalidade</p>
               <p className="mb-1">- Responda apenas clickando na opção</p>
               <p className="mb-1">- Você terá 3 minutos para terminar o quiz</p>
+              <p className="mb-1">- Serão 10 perguntas, com pontuação máxima de 20</p>
               <p className="mb-1">- No final você terá seu resultado!</p>
               <footer className="blockquote-footer">Good luck have fun!</footer>
             </blockquote>
 
             <div className="mt-3">
-              <label className="lead">Nossos brindes</label>
+              <label className="lead">Nossos brindes restantes</label>
               <blockquote className="blockquote">
                 <p className="mb-1"><span className="badge badge-pill badge-primary">{headphones}</span> Headphones</p>
                 <p className="mb-1"><span className="badge badge-pill badge-primary">{mugs}</span> Canecas</p>
-                <p className="mb-1"><span className="badge badge-pill badge-primary">{shocks}</span> Meias</p>
+                <p className="mb-1"><span className="badge badge-pill badge-primary">{socks}</span> Meias</p>
               </blockquote>
             </div>
           </div>

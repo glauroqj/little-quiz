@@ -6,7 +6,7 @@ const initialState = {
   quantity: {
     heaphones: '--',
     mugs: '--',
-    shocks: '--'
+    socks: '--'
   },
   loading: true
 }
