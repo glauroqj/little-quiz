@@ -68,7 +68,6 @@ html, body {
       }
     }
 
-
     .box-balloon {
       display: flex;
       flex-direction: column;
@@ -152,6 +151,9 @@ html, body {
         }
       }
 
+      .img-icon {
+        width: 15px;
+      }
     }
   }
 
@@ -231,6 +233,12 @@ html, body {
         }
       }
     }
+  }
+
+
+  .img-icon {
+    width: 25px;
+    height: auto;
   }
 
   /* offline */

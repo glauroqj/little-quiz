@@ -15,21 +15,6 @@ export const others = [
     }
   },
   {
-    "ask": "Quantos DeLorean coexistem em Hill Valley 1955 em De Volta para o futuro?",
-    "options": [
-        "4",
-        "3",
-        "2", 
-        "1"
-    ],
-    "correct": "4",
-    "value": 3,
-    "author": {
-      "name": "Fabrício Cunha",
-      "photo": require("../assets/images/baricio.png")
-    }
-  },
-  {
     "ask": "Isaac Asimov criou as 3 leis da robotica, qual a primeira lei?",
     "options": [
         "Um robô deve obedecer as ordens que lhe sejam dadas por seres humanos",
@@ -54,21 +39,6 @@ export const others = [
     ],
     "correct": "Joia da mente",
     "value": 1,
-    "author": {
-      "name": "Fabrício Cunha",
-      "photo": require("../assets/images/baricio.png")
-    }
-  },
-  {
-    "ask": "Qual o tempo de carga do anel do Laterna Verde?",
-    "options": [
-        "12 horas",
-        "24 horas",
-        "1 semana", 
-        "1 mês"
-    ],
-    "correct": "24 horas",
-    "value": 3,
     "author": {
       "name": "Fabrício Cunha",
       "photo": require("../assets/images/baricio.png")
@@ -105,21 +75,6 @@ export const others = [
     }
   },
   {
-    "ask": "Qual o dia da toalha?",
-    "options": [
-        "15 de Maio",
-        "4 de Maio", 
-        "2 de Abril",
-        "25 de Maio"
-    ],
-    "correct": "25 de Maio",
-    "value": 1,
-    "author": {
-      "name": "Fabrício Cunha",
-      "photo": require("../assets/images/baricio.png")
-    }
-  },
-  {
     "ask": "Em game of thrones, Qual foi o único dos Sete Reinos que Aegon I não conseguiu conquistar?",
     "options": [
         "Dorne",
@@ -147,6 +102,51 @@ export const others = [
     "author": {
       "name": "Fabrício Cunha",
       "photo": require("../assets/images/baricio.png")
+    }
+  },
+  {
+    "ask": "Na saga Harry Potter, qual das seguintes opções não é uma horcrux?",
+    "options": [
+        "O diário de Tom Hiddle",
+        "Harry Potter", 
+        "A pedra da ressureição",
+        "Nagini"
+    ],
+    "correct": "A pedra da ressureição",
+    "value": 2,
+    "author": {
+      "name": "Sophia Ragone",
+      "photo": require("../assets/images/sophia.jpg")
+    }
+  },
+  {
+    "ask": "Qual dos filmes de Tarantino não teve participação de Samuel L. Jackson?",
+    "options": [
+        "Django livre",
+        "Jackie Brown",
+        "Kill Bill: vol. 2", 
+        "Cães de Aluguel"
+    ],
+    "correct": "Cães de Aluguel",
+    "value": 3,
+    "author": {
+      "name": "Sophia Ragone",
+      "photo": require("../assets/images/sophia.jpg")
+    }
+  },
+  {
+    "ask": "Qual dos seguintes filmes não teve sua trilha sonora composta pore Hans Zimmer?",
+    "options": [
+        "12 anos de escravidão",
+        "O Rei Leão",
+        "Gravidade", 
+        "O amor não tira férias"
+    ],
+    "correct": "Gravidade",
+    "value": 2,
+    "author": {
+      "name": "Sophia Ragone",
+      "photo": require("../assets/images/sophia.jpg")
     }
   }
 ]

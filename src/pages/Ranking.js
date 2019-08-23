@@ -11,6 +11,11 @@ import Loading from '../components/Loading'
 /** actions */
 import { fetchListService } from '../store/actions/ranking/rankingActions'
 
+/** imgs */
+import socksImg from '../assets/images/sock.png'
+import mugsImg from '../assets/images/mugs.png'
+import phoneImg from '../assets/images/phone.png'
+
 const Ranking = props => {
   const { front, back, android, others, loading } = props.state.ranking
   const dispatch = useDispatch()
@@ -38,6 +43,19 @@ const Ranking = props => {
 
   }, [dispatch])
 
+  const chooseImg = bounty => {
+    switch (bounty) {
+      case 'mugs':
+        return mugsImg
+      case 'socks':
+        return socksImg
+      case 'headphones':
+        return phoneImg
+      default:
+        return ''
+    }
+  }
+
   return (
     <div className="List animated fadeIn">
       <div className="container-fluid">
@@ -64,7 +82,10 @@ const Ranking = props => {
                   <span className="name">{index+1} {item.player}</span>
                   {/* <span className="email">{item.email}</span> */}
                   <span className="time">{item.time}</span>
-                  <span className="score badge badge-success badge-pill">{`${item.score} / 20`}</span>
+                  <span className="score badge badge-success badge-pill">
+                    {`${item.score} / 20`}
+                    <img className="ml-2 img-icon" src={chooseImg(item.bounty)} />
+                  </span>
                 </ol>
               ))
               .filter((item, index) => index < 10)
@@ -80,7 +101,10 @@ const Ranking = props => {
                   <span className="name">{index+1} {item.player}</span>
                   {/* <span className="email">{item.email}</span> */}
                   <span className="time">{item.time}</span>
-                  <span className="score badge badge-success badge-pill">{`${item.score} / 20`}</span>
+                  <span className="score badge badge-success badge-pill">
+                    {`${item.score} / 20`}
+                    <img className="ml-2 img-icon" src={chooseImg(item.bounty)} />
+                  </span>
                 </ol>
               ))
               .filter((item, index) => index < 10)
@@ -96,7 +120,10 @@ const Ranking = props => {
                   <span className="name">{index+1} {item.player}</span>
                   {/* <span className="email">{item.email}</span> */}
                   <span className="time">{item.time}</span>
-                  <span className="score badge badge-success badge-pill">{`${item.score} / 20`}</span>
+                  <span className="score badge badge-success badge-pill">
+                    {`${item.score} / 20`}
+                    <img className="ml-2 img-icon" src={chooseImg(item.bounty)} />
+                  </span>
                 </ol>
               ))
               .filter((item, index) => index < 10)
@@ -112,7 +139,10 @@ const Ranking = props => {
                   <span className="name">{index+1} {item.player}</span>
                   {/* <span className="email">{item.email}</span> */}
                   <span className="time">{item.time}</span>
-                  <span className="score badge badge-success badge-pill">{`${item.score} / 20`}</span>
+                  <span className="score badge badge-success badge-pill">
+                    {`${item.score} / 20`}
+                    <img className="ml-2 img-icon" src={chooseImg(item.bounty)} />
+                  </span>
                 </ol>
               ))
               .filter((item, index) => index < 10)

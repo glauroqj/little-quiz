@@ -9,6 +9,11 @@ import 'firebase/firestore'
 import QuizForm from '../components/QuizForm'
 import BalloonChat from '../components/BalloonChat'
 
+/** imgs */
+import socksImg from '../assets/images/sock.png'
+import mugsImg from '../assets/images/mugs.png'
+import phoneImg from '../assets/images/phone.png'
+
 /** utils */
 import { isValidEmail } from '../utils/validates'
 
@@ -93,9 +98,15 @@ const App = props => {
             <div className="mt-3">
               <label className="lead">Nossos brindes restantes</label>
               <blockquote className="blockquote">
-                <p className="mb-1"><span className="badge badge-pill badge-primary">{headphones}</span> Headphones</p>
-                <p className="mb-1"><span className="badge badge-pill badge-primary">{mugs}</span> Canecas</p>
-                <p className="mb-1"><span className="badge badge-pill badge-primary">{socks}</span> Meias</p>
+                <p className="mb-1"><span className="badge badge-pill badge-primary">
+                  {headphones}</span> Headphones <img className="img-icon" src={phoneImg} />
+                </p>
+                <p className="mb-1"><span className="badge badge-pill badge-primary">
+                  {mugs}</span> Canecas <img className="img-icon" src={mugsImg} />
+                </p>
+                <p className="mb-1"><span className="badge badge-pill badge-primary">
+                  {socks}</span> Meias <img className="img-icon" src={socksImg} />
+                </p>
               </blockquote>
             </div>
           </div>
