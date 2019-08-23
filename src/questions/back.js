@@ -108,7 +108,7 @@ export const back = [
     },
     {
         "ask": "No PHP 7.2, qual será o resultado deste script?",
-        "image": require("../assets/images/back/php_question_array_compare.png"),
+        "image": require("../assets/images/back/thewrongway.png"),
         "options": [
             "Erro de passagem de string para construtor",
             "Erro de acesso de propriedade privada",
