@@ -29,12 +29,17 @@ const Ranking = props => {
     .orderBy('score', 'desc')
     .onSnapshot(querySnapshot => {
       let list = []
+      let listSeconds = []
+      let listFinal = []
+      querySnapshot.forEach(doc => list.push( doc.data() ))
 
-      querySnapshot.forEach(doc => list.push(doc.data()))
+      /** prepare list */
+      listSeconds = list.sort((item1, item2) => item1.seconds < item2.seconds ? 1 : -1) /** reorder lower seconds  */
+      listFinal = listSeconds.sort((item1, item2) => item1.score < item2.score ? 1 : -1) /** reorder higher score */
 
       /** call action */
       console.log('< REAL TIME DATA : OK > ')
-      dispatch( fetchListService(list) )
+      dispatch( fetchListService(listFinal) )
     },
     (error) => {
       console.warn('< REAL TIME DATA : ERROR > ', error)
@@ -84,7 +89,7 @@ const Ranking = props => {
                   <span className="time">{item.time}</span>
                   <span className="score badge badge-success badge-pill">
                     {`${item.score} / 20`}
-                    <img className="ml-2 img-icon" src={chooseImg(item.bounty)} />
+                    <img className="ml-2 img-icon" src={chooseImg(item.bounty)} alt="bounty" />
                   </span>
                 </ol>
               ))
@@ -103,7 +108,7 @@ const Ranking = props => {
                   <span className="time">{item.time}</span>
                   <span className="score badge badge-success badge-pill">
                     {`${item.score} / 20`}
-                    <img className="ml-2 img-icon" src={chooseImg(item.bounty)} />
+                    <img className="ml-2 img-icon" src={chooseImg(item.bounty)} alt="bounty" />
                   </span>
                 </ol>
               ))
@@ -122,7 +127,7 @@ const Ranking = props => {
                   <span className="time">{item.time}</span>
                   <span className="score badge badge-success badge-pill">
                     {`${item.score} / 20`}
-                    <img className="ml-2 img-icon" src={chooseImg(item.bounty)} />
+                    <img className="ml-2 img-icon" src={chooseImg(item.bounty)} alt="bounty" />
                   </span>
                 </ol>
               ))
@@ -141,7 +146,7 @@ const Ranking = props => {
                   <span className="time">{item.time}</span>
                   <span className="score badge badge-success badge-pill">
                     {`${item.score} / 20`}
-                    <img className="ml-2 img-icon" src={chooseImg(item.bounty)} />
+                    <img className="ml-2 img-icon" src={chooseImg(item.bounty)} alt="bounty" />
                   </span>
                 </ol>
               ))

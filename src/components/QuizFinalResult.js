@@ -51,7 +51,7 @@ const QuizFinalResult = ({ player, score, finishTimeSeconds, bounty, reset }) =>
           Bounty
           <span className="badge badge-primary">
             { bounty }
-            <img className="ml-2 img-icon" src={chooseImg()} />
+            <img className="ml-2 img-icon" src={chooseImg()} alt="bountys" />
           </span>
         </li>
       </ul>

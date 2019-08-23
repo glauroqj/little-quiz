@@ -99,13 +99,13 @@ const App = props => {
               <label className="lead">Nossos brindes restantes</label>
               <blockquote className="blockquote">
                 <p className="mb-1"><span className="badge badge-pill badge-primary">
-                  {headphones}</span> Headphones <img className="img-icon" src={phoneImg} />
+                  {headphones}</span> Headphones <img className="img-icon" src={phoneImg} alt="phones" />
                 </p>
                 <p className="mb-1"><span className="badge badge-pill badge-primary">
-                  {mugs}</span> Canecas <img className="img-icon" src={mugsImg} />
+                  {mugs}</span> Canecas <img className="img-icon" src={mugsImg} alt="mugs" />
                 </p>
                 <p className="mb-1"><span className="badge badge-pill badge-primary">
-                  {socks}</span> Meias <img className="img-icon" src={socksImg} />
+                  {socks}</span> Meias <img className="img-icon" src={socksImg} alt="socks" />
                 </p>
               </blockquote>
             </div>
