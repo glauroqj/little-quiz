@@ -14,6 +14,9 @@ import { isValidEmail } from '../utils/validates'
 /** actions */
 import { fetchStockService } from '../store/actions/stock/stockActions'
 
+/** image */
+import ingressinho from '../assets/images/ingressinho.png'
+
 const App = props => {
   const { headphones, mugs, socks } = props.state.stock.quantity
   const dispatch = useDispatch()
@@ -197,6 +200,8 @@ const App = props => {
                   )}
                 </div>
               )}
+
+              <img className="img-fluid" src={ingressinho} />
 
             </form>
           </div>

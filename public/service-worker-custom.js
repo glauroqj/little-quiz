@@ -68,21 +68,3 @@ self.addEventListener('activate', (event) => {
   )
 
 })
-
-/** offline support */
-self.addEventListener('fetch', async (event) => {
-  const client = await clients.get(event.clientId)
-  setInterval(() => {
-    /** check connection */
-    const connection = navigator.onLine
-    handleOfflineMessage(connection, client)
-  }, 3000)
-})
-
-handleOfflineMessage = (connection, client) => {
-  if (!client) return false
-  client.postMessage({
-    msg: 'Check connection',
-    isOnline: connection
-  })
-}

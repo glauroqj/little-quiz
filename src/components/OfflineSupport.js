@@ -17,20 +17,23 @@ const OfflineSupport = () => {
           console.log('< SERVICE WORKER : FAIL >', registrationError)
         })
         
-        navigator.serviceWorker.addEventListener('message', event => {
-          const { status } = state
-          // console.log('Listener SERVICE WORKER: ', event.data)
-          if (status !== event.data.isOnline) {
-            setState({
-              status: event.data.isOnline
-            })
-          }
-        })
       }
+      
+      setInterval(() => {
+        const connection = navigator ? navigator.onLine : ''
 
+        if (state.status !== connection) {
+          setState({
+            ...state,
+            status: connection
+          })
+        }
+
+      }, 5000)
     }
-
-  }, [state])
+    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   if (!state.status) {
     return (
