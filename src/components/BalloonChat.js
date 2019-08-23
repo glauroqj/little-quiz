@@ -16,7 +16,7 @@ const BalloonChat = ({ type }) => {
       case false:
         return 'Olá bem-vindo ao nosso quiz, vamos começar?'
       default:
-        return 'Olá Aventureiro, sabia que na Sympla tem muitas vagas...'
+        return 'Olá Aventureira(o), sabia que na Sympla tem muitas vagas...'
     }
   }
 

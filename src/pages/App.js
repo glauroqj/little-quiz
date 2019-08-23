@@ -182,7 +182,7 @@ const App = props => {
                         checked={ state.type === 'others' }
                         onChange={ e => { setState({ ...state, type: e.target.value }) } }
                       />
-                      Aventureiro [ filmes, curiosidades entre outros ]
+                      Aventureira(o) [ filmes, curiosidades entre outros ]
                     </label>
                   </div>
                   {state.type !== false && (
