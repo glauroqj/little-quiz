@@ -7,15 +7,13 @@ import 'firebase/firestore'
 
 /** components */
 import QuizForm from '../components/QuizForm'
+import BalloonChat from '../components/BalloonChat'
 
 /** utils */
 import { isValidEmail } from '../utils/validates'
 
 /** actions */
 import { fetchStockService } from '../store/actions/stock/stockActions'
-
-/** image */
-import ingressinho from '../assets/images/ingressinho.png'
 
 const App = props => {
   const { headphones, mugs, socks } = props.state.stock.quantity
@@ -201,7 +199,7 @@ const App = props => {
                 </div>
               )}
 
-              <img className="img-fluid" src={ingressinho} />
+              <BalloonChat type={state.type} />
 
             </form>
           </div>

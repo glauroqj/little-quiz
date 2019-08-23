@@ -67,6 +67,45 @@ html, body {
         color: #fff;
       }
     }
+
+
+    .box-balloon {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+
+      .balloon {
+        width: 100%;
+        text-align: center;
+        border: 2px solid #002540;
+        background-color: #004A80;
+        border-radius: 10px;
+        padding: 10px;
+        letter-spacing: 1.5px;
+        position: absolute;
+        top: 10%;
+
+        &:before {
+          content: "";
+          width: 0px;
+          height: 0px;
+          position: absolute;
+          border-left: 10px solid transparent;
+          border-right: 10px solid transparent;
+          border-top: 10px solid #002540;
+          border-bottom: 10px solid transparent;
+          right: 50%;
+          bottom: -22px;
+        }
+      }
+
+      .ingressinho {
+
+        img {
+        }
+      }
+    }
   }
 
   .List {
