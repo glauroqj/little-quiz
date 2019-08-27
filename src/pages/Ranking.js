@@ -30,8 +30,8 @@ const Ranking = props => {
     const db = firebase.firestore()
     
     db.collection('users')
-    .where('score', '<', 20)
-    .orderBy('score', 'desc')
+    // .where('score', '<', 20)
+    // .orderBy('score', 'desc')
     .onSnapshot(querySnapshot => {
       let list = []
       let listSeconds = []
@@ -43,7 +43,7 @@ const Ranking = props => {
       listFinal = listSeconds.sort((item1, item2) => item1.score < item2.score ? 1 : -1) /** reorder higher score */
 
       /** call action */
-      console.log('< REAL TIME DATA : OK > ')
+      console.log('< REAL TIME DATA : OK > ', listFinal.length)
       dispatch( fetchListService(listFinal) )
     },
     (error) => {
