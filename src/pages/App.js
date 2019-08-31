@@ -9,6 +9,9 @@ import 'firebase/firestore'
 import QuizForm from '../components/QuizForm'
 import BalloonChat from '../components/BalloonChat'
 
+/** notification */
+import { toast } from 'react-toastify'
+
 /** imgs */
 import socksImg from '../assets/images/sock.png'
 import mugsImg from '../assets/images/mugs.png'
@@ -54,6 +57,7 @@ const App = props => {
       type: false,
       startQuiz: false
     })
+    toast.error('Tempo esgotado :(')
   }
 
   return (

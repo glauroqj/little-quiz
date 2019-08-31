@@ -4,6 +4,9 @@ import { useDispatch } from 'react-redux'
 /** actions */
 import { loginService } from '../store/actions/user/userActions'
 
+/** notification */
+import { toast } from 'react-toastify'
+
 const Login = ({history}) => {
   const dispatch = useDispatch()
   const [state, setState] = useState({
@@ -18,6 +21,15 @@ const Login = ({history}) => {
     const result = await dispatch( loginService({ email: state.email, password: state.password }) )
 
     if (result) history.push('/admin')
+
+    if (!result) {
+      setState({
+        ...state,
+        email: '',
+        password: ''
+      })
+      toast.error('Algo está errado :/')
+    }
 
   }
 
@@ -34,7 +46,7 @@ const Login = ({history}) => {
         <div className={`row animated fadeIn`}>
           <div className="col-sm-6 ml-auto mr-auto">
             <form onKeyDown={ e => {
-              if (e.key === 'Enter') e.preventDefault()
+              if (e.key === 'Enter') login()
             }}>
 
               <div className="form-group-lg">

@@ -22,6 +22,11 @@ const ranking = (state = initialState, action) => {
           account: action.user,
           loading: false
         }
+      case USER.LOGOUT_USER_DONE:
+        return {
+          ...state,
+          account: false
+        }
     default:
       return state
   }

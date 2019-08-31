@@ -15,10 +15,19 @@ import {credentials} from './credentials'
 /** css */
 import './assets/css/main.scss'
 
+/** notification */
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 firebase.initializeApp(credentials)
 
 ReactDOM.render(
   <Provider store={store}>
+    <ToastContainer
+      position='top-right'
+      autoClose={3000}
+      pauseOnHover
+    />
     <Routes />
   </Provider>,
   document.getElementById('root')

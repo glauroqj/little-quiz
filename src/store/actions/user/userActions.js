@@ -1,7 +1,8 @@
 import { USER } from './userActionsType'
 import {
   fetchUserMiddleware,
-  loginUserMiddleware
+  loginUserMiddleware,
+  logoutUserMiddleware
 } from '../../middlewares/user/userMiddleware'
 
 const fetchStarting = () => ({
@@ -26,6 +27,17 @@ const loginError = () => ({
   type: USER.LOGIN_USER_ERROR
 })
 
+/** logout */
+const logoutStarting = () => ({
+  type: USER.LOGOUT_USER_STARTING
+})
+const logoutDone = () => ({
+  type: USER.LOGOUT_USER_DONE
+})
+const logoutError = () => ({
+  type: USER.LOGOUT_USER_ERROR
+})
+
 /** thunk */
 const fetchUserService = () => {
   return async (dispatch, getState) => {
@@ -47,7 +59,18 @@ const loginService = (form) => {
   }
 }
 
+const logoutService = () => {
+  return async (dispatch, getState) => {
+    dispatch( logoutStarting() )
+    const userLogout = await logoutUserMiddleware()
+    if (userLogout) dispatch( logoutDone() )
+    if (!userLogout) dispatch( logoutError() )
+    return userLogout
+  }
+}
+
 export {
   fetchUserService,
-  loginService
+  loginService,
+  logoutService
 }

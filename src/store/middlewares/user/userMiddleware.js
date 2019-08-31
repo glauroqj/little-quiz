@@ -29,7 +29,21 @@ const loginUserMiddleware = async (form) => {
   })
 }
 
+const logoutUserMiddleware = () => {
+  return new Promise(resolve => {
+    firebase.auth()
+    .signOut()
+    .then(() => {
+      resolve(true)
+    })
+    .catch(() => {
+      resolve(false)
+    })
+  })
+}
+
 export {
   fetchUserMiddleware,
-  loginUserMiddleware
+  loginUserMiddleware,
+  logoutUserMiddleware
 }
