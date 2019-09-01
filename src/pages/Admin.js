@@ -36,20 +36,69 @@ const Admin = ({state, history}) => {
     <div className="Admin animated fadeIn">
       <Navbar user={state.user.account} logout={ () => { logOut() } }  />
       <div className="container-fluid">
-        <div className="row">
-          <div className="col-sm-12">
-            <h1>Admin</h1>
-            <button
-              type="button"
-              className="btn btn-lg btn-success"
-              onClick={ () => history.push('/') }
-            >
-              HOME
-            </button>
+        <div className="row mt-3">
+
+          <div className="col-sm-4">
+            <div className="card border-primary mb-3">
+              <div className="card-header">Configurations</div>
+              <div className="card-body">
+                <ul className="list-group">
+                  <li className="list-group-item">
+                    <div class="form-group row">
+                      <label for="staticEmail" class="col-sm-12 col-form-label">Event Name</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" value="Devday" />
+                      </div>
+                    </div>
+                  </li>
+                  <li className="list-group-item">
+                    <div class="form-group row">
+                      <label for="staticEmail" class="col-sm-12 col-form-label">Timer</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" value="600" />
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
+
+          <div className="col-sm-4">
+            <div className="card border-primary mb-3">
+              <div className="card-header">Stock</div>
+              <div className="card-body">
+                <ul className="list-group">
+                  <li className="list-group-item">
+                    <div class="form-group row">
+                      <label for="staticEmail" class="col-sm-12 col-form-label">Headphone</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" value="20" />
+                      </div>
+                    </div>
+                  </li>
+                  <li className="list-group-item">
+                    <div class="form-group row">
+                      <label for="staticEmail" class="col-sm-12 col-form-label">Mugs</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" value="20" />
+                      </div>
+                    </div>
+                  </li>
+                  <li className="list-group-item">
+                    <div class="form-group row">
+                      <label for="staticEmail" class="col-sm-12 col-form-label">Socks</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" value="20" />
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
         </div>
-
-
       </div>
     </div>
   )
