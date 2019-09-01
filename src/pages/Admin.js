@@ -1,25 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
 
 /** components */
 import Navbar from '../components/Navbar'
+import Loading from '../components/Loading'
 
 /** notification */
 import { toast } from 'react-toastify'
 
 /** actions */
 import { logoutService } from '../store/actions/user/userActions'
+import { fetchConfigurationService } from '../store/actions/admin/adminActions'
 
 const Admin = ({state, history}) => {
   const dispatch = useDispatch()
+  const { configurations, loading } = state.admin
 
-  // const [state, setState] = useState({
-  //   loading: false
-  // })
+  useEffect(() => {
+    
+    const getConfig = async () => {
+      await dispatch( fetchConfigurationService() )
+    }
 
-  // useEffect(() => {
-  //   console.log('< ADMIN : STATE > ', state)
-  // })
+    if (loading) getConfig()
+
+  }, [])
 
   const logOut = async () => {
 
@@ -33,10 +38,15 @@ const Admin = ({state, history}) => {
   }
 
   return (
-    <div className="Admin animated fadeIn">
+    <div className="Admin">
       <Navbar user={state.user.account} logout={ () => { logOut() } }  />
       <div className="container-fluid">
-        <div className="row mt-3">
+
+        {loading &&
+          <Loading text='Carregando dados...' />
+        }
+
+        <div className="row mt-3 animated fadeIn">
 
           <div className="col-sm-4">
             <div className="card border-primary mb-3">
@@ -44,18 +54,18 @@ const Admin = ({state, history}) => {
               <div className="card-body">
                 <ul className="list-group">
                   <li className="list-group-item">
-                    <div class="form-group row">
-                      <label for="staticEmail" class="col-sm-12 col-form-label">Event Name</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" value="Devday" />
+                    <div className="form-group row">
+                      <label className="col-sm-12 col-form-label">Event Name</label>
+                      <div className="col-sm-10">
+                        <input type="text" className="form-control" value={configurations.eventName} />
                       </div>
                     </div>
                   </li>
                   <li className="list-group-item">
-                    <div class="form-group row">
-                      <label for="staticEmail" class="col-sm-12 col-form-label">Timer</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" value="600" />
+                    <div className="form-group row">
+                      <label className="col-sm-12 col-form-label">Timer</label>
+                      <div className="col-sm-10">
+                        <input type="text" className="form-control" value={configurations.time} />
                       </div>
                     </div>
                   </li>
@@ -70,26 +80,26 @@ const Admin = ({state, history}) => {
               <div className="card-body">
                 <ul className="list-group">
                   <li className="list-group-item">
-                    <div class="form-group row">
-                      <label for="staticEmail" class="col-sm-12 col-form-label">Headphone</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" value="20" />
+                    <div className="form-group row">
+                      <label className="col-sm-12 col-form-label">Headphone</label>
+                      <div className="col-sm-10">
+                        <input type="text" className="form-control" value="20" />
                       </div>
                     </div>
                   </li>
                   <li className="list-group-item">
-                    <div class="form-group row">
-                      <label for="staticEmail" class="col-sm-12 col-form-label">Mugs</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" value="20" />
+                    <div className="form-group row">
+                      <label className="col-sm-12 col-form-label">Mugs</label>
+                      <div className="col-sm-10">
+                        <input type="text" className="form-control" value="20" />
                       </div>
                     </div>
                   </li>
                   <li className="list-group-item">
-                    <div class="form-group row">
-                      <label for="staticEmail" class="col-sm-12 col-form-label">Socks</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" value="20" />
+                    <div className="form-group row">
+                      <label className="col-sm-12 col-form-label">Socks</label>
+                      <div className="col-sm-10">
+                        <input type="text" className="form-control" value="20" />
                       </div>
                     </div>
                   </li>
@@ -109,7 +119,8 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  logoutService: () => dispatch( logoutService() )
+  logoutService: () => dispatch( logoutService() ),
+  fetchConfigurationService: () => dispatch( fetchConfigurationService()  )
 })
 
 export default connect(
