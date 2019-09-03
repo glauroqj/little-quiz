@@ -19,6 +19,7 @@ import App from '../pages/App'
 import Ranking from '../pages/Ranking'
 import Login from '../pages/Login'
 import Admin from '../pages/Admin'
+import AdminCreateEvent from '../pages/AdminCreateEvent'
 
 const Routes = (props) => {
   const dispatch = useDispatch()
@@ -55,6 +56,7 @@ const Routes = (props) => {
         <Route exact path="/ranking" component={Ranking} />
         <Route exact path="/login" component={Login} />
         <PrivateRoute exact path="/admin" component={Admin} auth={props.state.user.account} />
+        <PrivateRoute exact path="/admin/create-event" component={AdminCreateEvent} auth={props.state.user.account} />
         <Redirect push to="/" />
       </Switch>
     </BrowserRouter>

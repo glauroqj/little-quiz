@@ -17,6 +17,9 @@ const Navbar = ({user, logout}) => {
             <div className="nav-link disabled">Account: {user.email}</div>
           </li>
           <li className="nav-item">
+            <Link className="nav-link" to='/admin/create-event'>Create Event</Link>
+          </li>
+          <li className="nav-item">
             <button 
               className="nav-link btn btn-link"
               onClick={ () => logout() }
