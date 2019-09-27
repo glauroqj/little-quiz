@@ -14,7 +14,7 @@ import { toast } from 'react-toastify'
 
 /** imgs */
 import socksImg from '../assets/images/sock.png'
-// import mugsImg from '../assets/images/mugs.png'
+import mugsImg from '../assets/images/mugs.png'
 import phoneImg from '../assets/images/phone.png'
 
 
@@ -53,7 +53,6 @@ const Draw = props => {
       startDraw: false,
       finalPerk: false
     })
-    toast.error('Tempo esgotado :(')
   }
 
   const shufflePerk = async () => {
@@ -67,6 +66,16 @@ const Draw = props => {
 
     const bounty = await getBounty(quantity)
     console.log(bounty)
+
+    setTimeout(() => {
+      setState({
+        ...state,
+        type: 'draw-done',
+        startDraw: false,
+        finalPerk: bounty
+      })
+    }, 5000)
+
   }
 
   const getBounty = perks => {
@@ -109,6 +118,19 @@ const Draw = props => {
     return arrayPerks[randIndex]
   }
 
+  const chooseImg = bounty => {
+    switch (bounty) {
+      case 'mugs':
+        return mugsImg
+      case 'socks':
+        return socksImg
+      case 'headphones':
+        return phoneImg
+      default:
+        return ''
+    }
+  }
+
   return (
     <div className="App animated fadeIn">
       <div className="container">
@@ -140,17 +162,47 @@ const Draw = props => {
               if (e.key === 'Enter') e.preventDefault()
             }}>
               
-              {state.startDraw && (
-                <Loading text='Sorteandoo...' />
+              <div className="draw-box">
+                {!state.startDraw && !state.finalPerk && (
+                  <h2 className="animated fadeIn">Vamos ganhar brindes???</h2>
+                )}
+                
+                {state.startDraw && (
+                  <div className="animated fadeIn">
+                    <Loading text='Sorteandoo...' />
+                  </div>
+                )}
+
+                {state.finalPerk && (
+                  <div className="animated flipInX">
+                    <img className="" src={chooseImg(state.finalPerk)} alt="bounty" />
+                    <h3>{ state.finalPerk }</h3>
+                  </div>
+                )}
+
+              </div>
+
+              {!state.finalPerk && (
+                <button
+                  className="btn btn-lg btn-success btn-block"
+                  type="button"
+                  disabled={state.startDraw}
+                  onClick={ () => shufflePerk() }
+                >
+                  Click para Sortear
+                </button>
               )}
 
-              <button
-                className="btn btn-lg btn-success btn-block"
-                type="button"
-                onClick={ () => shufflePerk() }
-              >
-                Click para Sortear
-              </button>
+              {state.finalPerk && (
+                <button
+                  className="btn btn-lg btn-danger btn-block"
+                  type="button"
+                  disabled={state.startDraw}
+                  onClick={ () => resetForm() }
+                >
+                  Sortear outro
+                </button>
+              )}
 
               <BalloonChat type={state.type} />
 

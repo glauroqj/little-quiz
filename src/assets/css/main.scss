@@ -342,3 +342,22 @@ html, body {
   font-size: 1.2em;
   color: #fff;
 }
+
+/** draw */
+
+.draw-box {
+  height: 180px;
+  margin: 0 auto;
+  text-align: center;
+
+  img {
+    height: auto;
+    max-height: 130px;
+    width: 30%;
+    margin-top: -10px;
+  }
+
+  h3 {
+    margin-top: 15px;
+  }
+}
