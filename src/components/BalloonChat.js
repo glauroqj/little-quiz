@@ -13,6 +13,10 @@ const BalloonChat = ({ type }) => {
         return 'Olá dev Back-End, temos vagas na Sympla...'
       case 'android':
         return 'Olá dev Android, temos vagas na Sympla...'
+      case 'draw':
+        return 'Olá, vamos sortear o seu prêmio?'
+      case 'draw-running':
+          return 'Boa sorteee, estou torcendo por você?'
       case false:
         return 'Olá bem-vindo ao nosso quiz, vamos começar?'
       default:

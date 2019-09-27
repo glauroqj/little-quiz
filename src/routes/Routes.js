@@ -16,6 +16,7 @@ import { fetchUserService } from '../store/actions/user/userActions'
 
 /** routes */
 import App from '../pages/App'
+import Draw from '../pages/Draw'
 import Ranking from '../pages/Ranking'
 import Login from '../pages/Login'
 import Admin from '../pages/Admin'
@@ -54,6 +55,7 @@ const Routes = (props) => {
       <Switch>
         <Route exact path="/" component={App} />
         <Route exact path="/ranking" component={Ranking} />
+        <Route exact path="/sorteio" component={Draw} />
         <Route exact path="/login" component={Login} />
         <PrivateRoute exact path="/admin" component={Admin} auth={props.state.user.account} />
         <PrivateRoute exact path="/admin/create-event" component={AdminCreateEvent} auth={props.state.user.account} />
