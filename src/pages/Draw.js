@@ -56,6 +56,7 @@ const Draw = props => {
   }
 
   const shufflePerk = async () => {
+    const db = firebase.firestore()
     const { quantity } = props.state.stock
 
     setState({
@@ -67,7 +68,16 @@ const Draw = props => {
     const bounty = await getBounty(quantity)
     console.log(bounty)
 
-    setTimeout(() => {
+    setTimeout(async () => {
+      
+      if (bounty !== 'Algo deu errado, verifique o estoque :(') {
+        await db.collection('stock')
+        .doc('quantity')
+        .set({
+          [bounty]: quantity[bounty] - 1
+        }, {merge: true})
+      }
+
       setState({
         ...state,
         type: 'draw-done',
