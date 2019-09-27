@@ -109,6 +109,7 @@ const Draw = props => {
 
           if (count === 4) {
             clearInterval(tryAgain)
+            // resolve('no-perk')
             resolve('Algo deu errado, verifique o estoque :(')
           }
 
@@ -136,6 +137,21 @@ const Draw = props => {
         return socksImg
       case 'headphones':
         return phoneImg
+      default:
+        return ''
+    }
+  }
+
+  const choosePerkName = bounty => {
+    switch (bounty) {
+      case 'mugs':
+        return 'Caneca'
+      case 'socks':
+        return 'Meia'
+      case 'headphones':
+        return 'Headphones'
+      case 'no-perk':
+        return 'Não foi desta vez :('
       default:
         return ''
     }
@@ -185,8 +201,10 @@ const Draw = props => {
 
                 {state.finalPerk && (
                   <div className="animated flipInX">
-                    <img className="" src={chooseImg(state.finalPerk)} alt="bounty" />
-                    <h3>{ state.finalPerk }</h3>
+                    {state.finalPerk !== 'no-perk' && (
+                      <img className="" src={chooseImg(state.finalPerk)} alt="bounty" />
+                    )}
+                    <h3>{ choosePerkName(state.finalPerk) }</h3>
                   </div>
                 )}
 

@@ -18,7 +18,7 @@ const BalloonChat = ({ type }) => {
       case 'draw-running':
           return 'Boa sorteee, estou torcendo por você?'
       case 'draw-done':
-          return 'Parabéns, você ganhoooou!!!!'
+          return 'Sabia que na Sympla tem muitas vagas???'
       case false:
         return 'Olá bem-vindo ao nosso quiz, vamos começar?'
       default:
