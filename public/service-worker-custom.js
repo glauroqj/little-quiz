@@ -1,7 +1,9 @@
 /** workbox */
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js')
 
-const { routing } = workbox
+const { routing, core } = workbox
+
+core.skipWaiting()
 
 routing.registerRoute(
   // Cache CSS files
