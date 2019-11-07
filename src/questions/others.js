@@ -1,6 +1,6 @@
 export const others = [
   {
-    "ask": "Qual é a resposta para a vida o universo e tudo mais?",
+    "ask": "Qual é a resposta para a vida, o universo e tudo mais?",
     "options": [
         "52",
         "Viver e aprender",
@@ -15,14 +15,14 @@ export const others = [
     }
   },
   {
-    "ask": "Isaac Asimov criou as 3 leis da robotica, qual a primeira lei?",
+    "ask": "Quais são os nomes dos dragões de Daenerys Targaryen?",
     "options": [
-        "Um robô deve obedecer as ordens que lhe sejam dadas por seres humanos",
-        "Um robô deve proteger sua própria existência",
-        "um robô não pode causar mal à humanidade", 
-        "Um robô não pode ferir um ser humano ou, por inação, permitir que um ser humano sofra algum mal"
+        "Drogon, Vhagar e Viserys",
+        "Drogo, Rhaegar e Viserys",
+        "Balerion, Drogon e Viserion", 
+        "Drogon, Rhaegal e Viserion"
     ],
-    "correct": "Um robô não pode ferir um ser humano ou, por inação, permitir que um ser humano sofra algum mal",
+    "correct": "Drogon, Rhaegal e Viserion",
     "value": 3,
     "author": {
       "name": "Fabrício Cunha",
@@ -30,14 +30,14 @@ export const others = [
     }
   },
   {
-    "ask": "Qual das joias do infinito está encrustada na cabeça do Visão?",
+    "ask": "Qual desses não é órfão?",
     "options": [
-        "Joia do poder",
-        "Joia do tempo",
-        "Joia da realidade", 
-        "Joia da mente"
+        "Super-man",
+        "Homem-Aranha",
+        "Arqueiro Verde", 
+        "Cable"
     ],
-    "correct": "Joia da mente",
+    "correct": "Cable",
     "value": 1,
     "author": {
       "name": "Fabrício Cunha",
@@ -45,14 +45,14 @@ export const others = [
     }
   },
   {
-    "ask": "Na saga das 12 casas de Cavaleiro dos Zodiaco, qual é a decima segunda casa?",
+    "ask": "Qual o planeta natal de Spock, o ser lógico da série e saga de filmes Star Trek",
     "options": [
-        "Casa de Peixes",
-        "Casa de Áries",
-        "Casa de Leão", 
-        "Casa de Libra"
+        "Spocklândia",
+        "Vulcano",
+        "Ele nasceu na Nave Enterprise", 
+        "Asgard"
     ],
-    "correct": "24 horas",
+    "correct": "Vulcano",
     "value": 2,
     "author": {
       "name": "Fabrício Cunha",
@@ -60,14 +60,14 @@ export const others = [
     }
   },
   {
-    "ask": "Quem matou Bardock o pai de Goku na saga Dragon Ball",
+    "ask": "Thanos fez sua primeira aparição em qual filme da Marvel?",
     "options": [
-        "Cell",
-        "Freeza",
-        "Kakaroto", 
-        "Madimbu"
+        "Em Capitão América: Soldado Invernal",
+        "Na segunda cena pós-créditos de Os Vingadores",
+        "Na primeira cena pós-créditos de Os Vingadores", 
+        "Em Guardiões da Galáxia 1"
     ],
-    "correct": "Freeza",
+    "correct": "Na primeira cena pós-créditos de Os Vingadores",
     "value": 2,
     "author": {
       "name": "Fabrício Cunha",
@@ -90,14 +90,14 @@ export const others = [
     }
   },
   {
-    "ask": "Qual foi o primeiro computador digital eletrônico de grande escala no mundo?",
+    "ask": "Em qual filme da saga Star Wars apareceu, pela primeira vez, a Marcha Imperial?",
     "options": [
-        "ENIAC",
-        "Leprechaun", 
-        "HAL 9000",
-        "Macintosh "
+        "Episódio V",
+        "Episódio II", 
+        "Episódio VII",
+        "Episódio III "
     ],
-    "correct": "ENIAC",
+    "correct": "Episódio V",
     "value": 2,
     "author": {
       "name": "Fabrício Cunha",
@@ -135,14 +135,14 @@ export const others = [
     }
   },
   {
-    "ask": "Qual dos seguintes filmes não teve sua trilha sonora composta pore Hans Zimmer?",
+    "ask": "Qual o nome da primeira armadura do Homem de Ferro?",
     "options": [
-        "12 anos de escravidão",
-        "O Rei Leão",
-        "Gravidade", 
-        "O amor não tira férias"
+        "Tony Enlatado",
+        "Steve",
+        "Mark 1", 
+        "Armor 1"
     ],
-    "correct": "Gravidade",
+    "correct": "Mark 1",
     "value": 2,
     "author": {
       "name": "Sophia Ragone",
