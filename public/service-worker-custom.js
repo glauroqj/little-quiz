@@ -44,7 +44,34 @@ routing.registerRoute(
       }),
     ],
   })
-);
+)
+
+routing.registerRoute(
+  /\w+.\w+.(chunk.js)/,
+  new workbox.strategies.StaleWhileRevalidate({
+    cacheName: 'quiz-js-cache',
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxEntries: 20,
+        maxAgeSeconds: 3600, /** 20min */
+      })
+    ]
+  })
+)
+
+
+routing.registerRoute(
+  /^(https:\/\/)/,
+  new workbox.strategies.StaleWhileRevalidate({
+    cacheName: 'quiz-pre-cache',
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxAgeSeconds: 86400, /** 20min */
+      })
+    ]
+  })
+)
+
 
 self.addEventListener('activate', (event) => {
   // delete any caches that aren't in expectedCaches
@@ -52,7 +79,9 @@ self.addEventListener('activate', (event) => {
   const expectedCacheNames = [
     'quiz-css-cache',
     'quiz-image-cache',
-    'quiz-font-cache'
+    'quiz-font-cache',
+    'quiz-pre-cache',
+    'quiz-js-cache'
   ]
 
   event.waitUntil(
