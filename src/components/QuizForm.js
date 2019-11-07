@@ -84,7 +84,8 @@ const QuizForm = ({ player, email, type, stock, reset }) => {
         bounty
       }
 
-      await db.collection('users').add(payload)
+      /** change colletion to event name */
+      await db.collection('tech-summit').add(payload)
       .then(() => {
         console.log('< SAVED IN FIREBASE >')
       })
@@ -130,7 +131,7 @@ const QuizForm = ({ player, email, type, stock, reset }) => {
             resolve(result)
           }
 
-          if (count === 4) {
+          if (count === 7) {
             clearInterval(tryAgain)
             resolve('Algo deu errado, verifique o estoque :(')
           }
@@ -157,7 +158,7 @@ const QuizForm = ({ player, email, type, stock, reset }) => {
         {!form.finishTime && (
           <Timer
             seconds={180}
-            reset={ () => reset() }
+            reset={ () => reset('timeout') }
           />
         )}
 

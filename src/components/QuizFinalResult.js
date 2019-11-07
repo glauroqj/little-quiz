@@ -16,20 +16,20 @@ const QuizFinalResult = ({ player, score, finishTimeSeconds, bounty, reset }) =>
 
   }, [])
 
-  const chooseImg = () => {
+  // const chooseImg = () => {
 
-    switch (bounty) {
-      case 'mugs':
-        return mugsImg
-      case 'socks':
-        return socksImg
-      case 'headphones':
-        return phoneImg
-      default:
-        return ''
-    }
+  //   switch (bounty) {
+  //     case 'mugs':
+  //       return mugsImg
+  //     case 'socks':
+  //       return socksImg
+  //     case 'headphones':
+  //       return phoneImg
+  //     default:
+  //       return ''
+  //   }
 
-  }
+  // }
 
   return (
     <div className="last-step animated zoomIn">
@@ -51,7 +51,7 @@ const QuizFinalResult = ({ player, score, finishTimeSeconds, bounty, reset }) =>
           Bounty
           <span className="badge badge-primary">
             { bounty }
-            <img className="ml-2 img-icon" src={chooseImg()} alt="bountys" />
+            {/* <img className="ml-2 img-icon" src={chooseImg()} alt="bountys" /> */}
           </span>
         </li>
       </ul>
@@ -59,7 +59,7 @@ const QuizFinalResult = ({ player, score, finishTimeSeconds, bounty, reset }) =>
       <div className="mt-3">
         <button
           className="btn btn-block btn-success btn-lg"
-          onClick={ () => reset() }
+          onClick={ () => reset('ok') }
           type="button"
         >
           Novo Jogo

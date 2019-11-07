@@ -24,7 +24,7 @@ import { isValidEmail } from '../utils/validates'
 import { fetchStockService } from '../store/actions/stock/stockActions'
 
 const App = props => {
-  const { headphones, mugs, socks } = props.state.stock.quantity
+  const { headphones, mugs, socks, squeeze, moleskine } = props.state.stock.quantity
   const dispatch = useDispatch()
 
   const [state, setState] = useState({
@@ -50,14 +50,15 @@ const App = props => {
 
   }, [dispatch])
 
-  const resetForm = () => {
+  const resetForm = (type) => {
     setState({
       name: '',
       email: '',
       type: false,
       startQuiz: false
     })
-    toast.error('Tempo esgotado :(')
+
+    if (type === 'timeout') toast.error('Tempo esgotado :(')
   }
 
   return (
@@ -103,13 +104,16 @@ const App = props => {
               <label className="lead">Nossos brindes restantes</label>
               <blockquote className="blockquote">
                 <p className="mb-1"><span className="badge badge-pill badge-primary">
-                  {headphones}</span> Headphones <img className="img-icon" src={phoneImg} alt="phones" />
+                  {squeeze}</span> Squeezees 
+                  {/* <img className="img-icon" src={phoneImg} alt="phones" /> */}
                 </p>
                 <p className="mb-1"><span className="badge badge-pill badge-primary">
-                  {mugs}</span> Canecas <img className="img-icon" src={mugsImg} alt="mugs" />
+                  {moleskine}</span> Moleskines 
+                  {/* <img className="img-icon" src={mugsImg} alt="mugs" /> */}
                 </p>
                 <p className="mb-1"><span className="badge badge-pill badge-primary">
-                  {socks}</span> Meias <img className="img-icon" src={socksImg} alt="socks" />
+                  {socks}</span> Meias 
+                  {/* <img className="img-icon" src={socksImg} alt="socks" /> */}
                 </p>
               </blockquote>
             </div>
@@ -152,7 +156,7 @@ const App = props => {
                 state.email !== '' && (
                 <div className="form-group mt-3 animated fadeIn">
                   <label htmlFor="name" className="lead">Escolha sua área</label>
-                  <div className="" onChange={ e => { setState({ ...state, type: e.target.value }) } }>
+                  {/* <div className="" onChange={ e => { setState({ ...state, type: e.target.value }) } }>
                     <label className="form-check-label">
                       <input
                         className="form-check-input"
@@ -187,7 +191,7 @@ const App = props => {
                       />
                       Android
                     </label>
-                  </div>
+                  </div> */}
                   <div className="" onChange={ e => { setState({ ...state, type: e.target.value }) } }>
                     <label className="form-check-label">
                       <input
