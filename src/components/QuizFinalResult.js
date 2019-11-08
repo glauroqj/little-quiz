@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 
 /** imgs */
-import socksImg from '../assets/images/sock.png'
-import mugsImg from '../assets/images/mugs.png'
-import phoneImg from '../assets/images/phone.png'
+// import socksImg from '../assets/images/sock.png'
+// import mugsImg from '../assets/images/mugs.png'
+// import phoneImg from '../assets/images/phone.png'
 
 const QuizFinalResult = ({ player, score, finishTimeSeconds, bounty, reset }) => {
 

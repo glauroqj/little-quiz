@@ -13,9 +13,9 @@ import BalloonChat from '../components/BalloonChat'
 import { toast } from 'react-toastify'
 
 /** imgs */
-import socksImg from '../assets/images/sock.png'
-import mugsImg from '../assets/images/mugs.png'
-import phoneImg from '../assets/images/phone.png'
+// import socksImg from '../assets/images/sock.png'
+// import mugsImg from '../assets/images/mugs.png'
+// import phoneImg from '../assets/images/phone.png'
 
 /** utils */
 import { isValidEmail } from '../utils/validates'
@@ -103,6 +103,10 @@ const App = props => {
             <div className="mt-3">
               <label className="lead">Nossos brindes restantes</label>
               <blockquote className="blockquote">
+                <p className="mb-1"><span className="badge badge-pill badge-primary">
+                  {headphones}</span> Headphones 
+                  {/* <img className="img-icon" src={phoneImg} alt="phones" /> */}
+                </p>
                 <p className="mb-1"><span className="badge badge-pill badge-primary">
                   {squeeze}</span> Squeezees 
                   {/* <img className="img-icon" src={phoneImg} alt="phones" /> */}
