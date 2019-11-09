@@ -85,13 +85,13 @@ const QuizForm = ({ player, email, type, stock, reset }) => {
       }
 
       /** change colletion to event name */
-      await db.collection('tech-summit').add(payload)
+      await db.collection('users').add(payload)
       .then(() => {
         console.log('< SAVED IN FIREBASE >')
       })
       .catch(error => console.warn('< PROBLEM TO SAVE IN DB > ', error))
 
-
+      /** remove perk in stock */
       if (bounty !== 'Algo deu errado, verifique o estoque :(') {
         await db.collection('stock').doc('quantity').set({
           [bounty]: stock[bounty] - 1
@@ -114,31 +114,23 @@ const QuizForm = ({ player, email, type, stock, reset }) => {
 
   const getBounty = perks => {
     return new Promise(resolve => {
-      let result = randomArray(perks)
 
-      /** verify stock */
-      if (stock[result] !== 0) resolve(result)
+      for (const item in perks) {
+        /** check perk stock */
+        if (perks[item] === 0) {
+          /** if no stock, remove from object */
+          // console.log('< delete perk > ', item)
+          delete perks[item]
+        }
+      }
 
-      if (stock[result] === 0) {
-        let count = 0
-
-        const tryAgain = setInterval(() => {
-
-          result = randomArray(perks)
-
-          if (stock[result] !== 0) {
-            clearInterval(tryAgain)
-            resolve(result)
-          }
-
-          if (count === 7) {
-            clearInterval(tryAgain)
-            resolve('Algo deu errado, verifique o estoque :(')
-          }
-
-          count++
-        }, 500)
-
+      // console.log('< check > ', Object.keys(perks).length)
+      if (Object.keys(perks).length === 0) {
+        resolve('Algo deu errado, verifique o estoque :(')
+      } else {
+        let result = randomArray(perks)
+        // console.log('< RESULT > ', result)
+        resolve(result)
       }
 
     })
