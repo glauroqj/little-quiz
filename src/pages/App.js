@@ -72,6 +72,150 @@ const App = props => {
         </div>
 
         {/** QUIZ FORM */}
+        {!state.startQuiz && (
+          <div className={`row animated fadeIn`}>
+
+            <div className="col-sm-6 ml-auto mr-auto">
+              <label className="lead">Algumas Regrinhas</label>
+              <blockquote className="blockquote">
+                <p className="mb-1">- Cada participante só poderá jogar uma vez</p>
+                <p className="mb-1">- Após preencher os campos, escolha uma modalidade</p>
+                <p className="mb-1">- Responda apenas clickando na opção</p>
+                <p className="mb-1">- Você terá 3 minutos para terminar o quiz</p>
+                <p className="mb-1">- Serão 10 perguntas, com pontuação máxima de 20</p>
+                <p className="mb-1">- No final você terá seu resultado!</p>
+                <footer className="blockquote-footer">Good luck have fun!</footer>
+              </blockquote>
+
+              <div className="mt-3">
+                <label className="lead">Nossos brindes restantes</label>
+                <blockquote className="blockquote">
+                  <p className="mb-1"><span className="badge badge-pill badge-primary">
+                    {headphones}</span> Headphones 
+                    {/* <img className="img-icon" src={phoneImg} alt="phones" /> */}
+                  </p>
+                  <p className="mb-1"><span className="badge badge-pill badge-primary">
+                    {squeeze}</span> Squeezees 
+                    {/* <img className="img-icon" src={phoneImg} alt="phones" /> */}
+                  </p>
+                  <p className="mb-1"><span className="badge badge-pill badge-primary">
+                    {moleskine}</span> Moleskines 
+                    {/* <img className="img-icon" src={mugsImg} alt="mugs" /> */}
+                  </p>
+                  <p className="mb-1"><span className="badge badge-pill badge-primary">
+                    {socks}</span> Meias 
+                    {/* <img className="img-icon" src={socksImg} alt="socks" /> */}
+                  </p>
+                </blockquote>
+              </div>
+            </div>
+
+            <div className="col-sm-6 ml-auto mr-auto">
+              <form onKeyDown={ e => {
+                if (e.key === 'Enter') e.preventDefault()
+              }}>
+
+                <div className="form-group-lg">
+                  <label htmlFor="name" className="lead">Nome & Sobrenome</label>
+                  <input
+                    type="text"
+                    className="form-control form-control-lg lead"
+                    id="name"
+                    placeholder="Pedro Maneiro"
+                    value={ state.name }
+                    onChange={ e => { setState({ ...state, name: e.target.value }) } }
+                  />
+                  {/* <small className="lead">Pode ser só seus 2 primeiros nomes mesmo =]</small> */}
+                </div>
+
+                <div className="form-group-lg mt-3">
+                  <label htmlFor="email" className="lead">Email</label>
+                  <input
+                    type="email"
+                    className="form-control form-control-lg lead"
+                    id="email"
+                    placeholder="pedrinho@email.com"
+                    required
+                    value={ state.email }
+                    onChange={ e => { setState({ ...state, email: e.target.value }) } }
+                    onBlur={ e => { setState({ ...state, email: isValidEmail(e.target.value) ? e.target.value : '' }) } }
+                  />
+                </div>
+
+                {state.name !== '' && 
+                  state.name.length > 3 &&
+                  state.email !== '' && (
+                  <div className="form-group mt-3 animated fadeIn">
+                    <label htmlFor="name" className="lead">Escolha sua área</label>
+                    {/* <div className="" onChange={ e => { setState({ ...state, type: e.target.value }) } }>
+                      <label className="form-check-label">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          value="front"
+                          checked={ state.type === 'front' }
+                          onChange={ e => { setState({ ...state, type: e.target.value }) } }
+                        />
+                        Front-End [ javascript, html, css ]
+                      </label>
+                    </div>
+                    <div className="" onChange={ e => { setState({ ...state, type: e.target.value }) } }>
+                      <label className="form-check-label">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          value="back"
+                          checked={ state.type === 'back' }
+                          onChange={ e => { setState({ ...state, type: e.target.value }) } }
+                        />
+                        Back-End [ php ]
+                      </label>
+                    </div>
+                    <div className="" onChange={ e => { setState({ ...state, type: e.target.value }) } }>
+                      <label className="form-check-label">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          value="android"
+                          checked={ state.type === 'android' }
+                          onChange={ e => { setState({ ...state, type: e.target.value }) } }
+                        />
+                        Android
+                      </label>
+                    </div> */}
+                    <div className="" onChange={ e => { setState({ ...state, type: e.target.value }) } }>
+                      <label className="form-check-label">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          value="others"
+                          checked={ state.type === 'others' }
+                          onChange={ e => { setState({ ...state, type: e.target.value }) } }
+                        />
+                        Aventureira(o) [ filmes, curiosidades entre outros ]
+                      </label>
+                    </div>
+                    {state.type !== false && (
+                      <div className="animated fadeIn mt-3">
+                        <button
+                          className="btn btn-lg btn-success btn-block"
+                          type="button"
+                          onClick={ () => { setState({ ...state, startQuiz: true }) } }
+                        >
+                          Iniciar Quiz
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                <BalloonChat type={state.type} />
+
+              </form>
+            </div>
+          </div>
+        )}
+        
         {state.startQuiz && (
           <div className={`row animated ${state.startQuiz ? 'fadeInDown' : 'fadeOutDown'}`}>
             <div className="col-sm-8 ml-auto mr-auto">
@@ -85,148 +229,6 @@ const App = props => {
             </div>
           </div>
         )}
-
-        <div className={`row animated ${state.startQuiz ? 'zoomOutDown' : 'fadeIn'}`}>
-
-          <div className="col-sm-6 ml-auto mr-auto">
-            <label className="lead">Algumas Regrinhas</label>
-            <blockquote className="blockquote">
-              <p className="mb-1">- Cada participante só poderá jogar uma vez</p>
-              <p className="mb-1">- Após preencher os campos, escolha uma modalidade</p>
-              <p className="mb-1">- Responda apenas clickando na opção</p>
-              <p className="mb-1">- Você terá 3 minutos para terminar o quiz</p>
-              <p className="mb-1">- Serão 10 perguntas, com pontuação máxima de 20</p>
-              <p className="mb-1">- No final você terá seu resultado!</p>
-              <footer className="blockquote-footer">Good luck have fun!</footer>
-            </blockquote>
-
-            <div className="mt-3">
-              <label className="lead">Nossos brindes restantes</label>
-              <blockquote className="blockquote">
-                <p className="mb-1"><span className="badge badge-pill badge-primary">
-                  {headphones}</span> Headphones 
-                  {/* <img className="img-icon" src={phoneImg} alt="phones" /> */}
-                </p>
-                <p className="mb-1"><span className="badge badge-pill badge-primary">
-                  {squeeze}</span> Squeezees 
-                  {/* <img className="img-icon" src={phoneImg} alt="phones" /> */}
-                </p>
-                <p className="mb-1"><span className="badge badge-pill badge-primary">
-                  {moleskine}</span> Moleskines 
-                  {/* <img className="img-icon" src={mugsImg} alt="mugs" /> */}
-                </p>
-                <p className="mb-1"><span className="badge badge-pill badge-primary">
-                  {socks}</span> Meias 
-                  {/* <img className="img-icon" src={socksImg} alt="socks" /> */}
-                </p>
-              </blockquote>
-            </div>
-          </div>
-
-          <div className="col-sm-6 ml-auto mr-auto">
-            <form onKeyDown={ e => {
-              if (e.key === 'Enter') e.preventDefault()
-            }}>
-
-              <div className="form-group-lg">
-                <label htmlFor="name" className="lead">Nome & Sobrenome</label>
-                <input
-                  type="text"
-                  className="form-control form-control-lg lead"
-                  id="name"
-                  placeholder="Pedro Maneiro"
-                  value={ state.name }
-                  onChange={ e => { setState({ ...state, name: e.target.value }) } }
-                />
-                {/* <small className="lead">Pode ser só seus 2 primeiros nomes mesmo =]</small> */}
-              </div>
-
-              <div className="form-group-lg mt-3">
-                <label htmlFor="email" className="lead">Email</label>
-                <input
-                  type="email"
-                  className="form-control form-control-lg lead"
-                  id="email"
-                  placeholder="pedrinho@email.com"
-                  required
-                  value={ state.email }
-                  onChange={ e => { setState({ ...state, email: e.target.value }) } }
-                  onBlur={ e => { setState({ ...state, email: isValidEmail(e.target.value) ? e.target.value : '' }) } }
-                />
-              </div>
-
-              {state.name !== '' && 
-                state.name.length > 3 &&
-                state.email !== '' && (
-                <div className="form-group mt-3 animated fadeIn">
-                  <label htmlFor="name" className="lead">Escolha sua área</label>
-                  {/* <div className="" onChange={ e => { setState({ ...state, type: e.target.value }) } }>
-                    <label className="form-check-label">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        value="front"
-                        checked={ state.type === 'front' }
-                        onChange={ e => { setState({ ...state, type: e.target.value }) } }
-                      />
-                      Front-End [ javascript, html, css ]
-                    </label>
-                  </div>
-                  <div className="" onChange={ e => { setState({ ...state, type: e.target.value }) } }>
-                    <label className="form-check-label">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        value="back"
-                        checked={ state.type === 'back' }
-                        onChange={ e => { setState({ ...state, type: e.target.value }) } }
-                      />
-                      Back-End [ php ]
-                    </label>
-                  </div>
-                  <div className="" onChange={ e => { setState({ ...state, type: e.target.value }) } }>
-                    <label className="form-check-label">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        value="android"
-                        checked={ state.type === 'android' }
-                        onChange={ e => { setState({ ...state, type: e.target.value }) } }
-                      />
-                      Android
-                    </label>
-                  </div> */}
-                  <div className="" onChange={ e => { setState({ ...state, type: e.target.value }) } }>
-                    <label className="form-check-label">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        value="others"
-                        checked={ state.type === 'others' }
-                        onChange={ e => { setState({ ...state, type: e.target.value }) } }
-                      />
-                      Aventureira(o) [ filmes, curiosidades entre outros ]
-                    </label>
-                  </div>
-                  {state.type !== false && (
-                    <div className="animated fadeIn mt-3">
-                      <button
-                        className="btn btn-lg btn-success btn-block"
-                        type="button"
-                        onClick={ () => { setState({ ...state, startQuiz: true }) } }
-                      >
-                        Iniciar Quiz
-                      </button>
-                    </div>
-                  )}
-                </div>
-              )}
-
-              <BalloonChat type={state.type} />
-
-            </form>
-          </div>
-        </div>
 
       </div>
     </div>
